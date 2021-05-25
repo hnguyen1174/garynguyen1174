@@ -1,8 +1,7 @@
 
 title = "I'm Gary Nguyen"
 author = "Gary Nguyen"
-#copyright = "2020-2021"
-description = "Gary Nguyen"
+description = "I'm a data scientist and NLP practitioner based in NYC"
 profilePicture = "images/profile_new.jpg"
 keywords = ""
 favicon = "favicons/"

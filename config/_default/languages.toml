@@ -1,13 +1,5 @@
 [en]
-title = "Welcome"
+title = "Welcome, I'm Gary"
 weight = 1
 LanguageName = "EN"
 contentDir = "content/english"
-
-[ar]
-title = "عربي"
-description = "أنا أحمد"
-contentDir = "content/arabic" 
-weight = 2
-LanguageDirection = "rtl" 
-LanguageName = "AR"

@@ -1,7 +1,7 @@
-baseURL: https://example.com
+baseURL: "/"
 languageCode: en
 DefaultContentLanguage: en
-title: Website of Jane Doe
+title: Website of Gary Nguyen
 theme: anatole
 summarylength: 10
 enableEmoji: yes

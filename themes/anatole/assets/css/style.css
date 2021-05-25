@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+
 :root {
     --bg-color: #fff;
     --secondary-bg-color: #eeeeee;
@@ -483,7 +485,7 @@ a:active {
 
 .post .post-footer .meta a {
     text-decoration: none;
-    color: var(--body-color);
+    color: #6a92c5;
 }
 
 .post .post-footer .meta a:hover {
