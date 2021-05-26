@@ -1,0 +1,23 @@
+---
+title: "Crunchbase Founder Analysis \U0001F680"
+summary: In this project, I used random forest and XGBoost to classify whether a startup is successful.
+author: Gary Nguyen
+date: '2021-05-26'
+output:
+  blogdown::html_page:
+    highlight: tango
+    toc: true
+slug: []
+thumbnail: "images/startup.jpeg"
+categories:
+  - Project
+tags:
+  - startup
+  - python
+Description: ''
+Tags: []
+Categories: []
+DisableComments: no
+---
+
+🚧 Under Construction 🚧
