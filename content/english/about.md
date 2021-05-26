@@ -16,3 +16,6 @@ Originally from Ho Chi Minh City, Vietnam 🇻🇳, I earned a BA in Economics a
 I am passionate about applying data science and NLP to solve tough problems in healthcare. I am also interested in time-series forecasting, deep learning, user analytics and MLOps. 
 
 In my free time, I can be seen jogging around the Hudson river piers and taking photos in NYC gorgeous public parks. 
+
+An updated copy of my resume can be found [here]().
+https://drive.google.com/file/d/1SCho01hxzjMvofYXt2TYTqSwsK1kD-Eb/view?usp=sharing
