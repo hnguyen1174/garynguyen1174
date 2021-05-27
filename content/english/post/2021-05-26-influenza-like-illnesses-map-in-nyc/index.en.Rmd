@@ -42,7 +42,7 @@ Total emergency department visits, and visits and admissions for influenza-like 
 
 ![](ili_050621.png)
 
-### Insigths:
+### Insights:
 
 * Number of influenza-like and/or pneumonia illness admission increases in tandem with COVID cases.
 * The boroughs (Queen and Bronx) have the highest cases
