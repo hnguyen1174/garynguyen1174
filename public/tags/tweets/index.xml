@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tweets on Welcome, I&#39;m Gary 👋</title>
+    <link>/tags/tweets/</link>
+    <description>Recent content in tweets on Welcome, I&#39;m Gary 👋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/tweets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Disaster Tweets Detector (🚧Under Construction 🚧)</title>
+      <link>/post/2021-05-26-disaster-tweets-detector-under-construction/</link>
+      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-05-26-disaster-tweets-detector-under-construction/</guid>
+      <description>This project aims to detect tweets that signals disastrous events.</description>
+    </item>
+    
+  </channel>
+</rss>

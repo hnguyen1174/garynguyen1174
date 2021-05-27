@@ -20,6 +20,67 @@ Categories: []
 DisableComments: no
 ---
 
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#project-objective">Project Objective</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#methods-and-findings">Methods and Findings</a></li>
+<li><a href="#insights">Insights</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+<li><a href="#artifact">Artifact</a></li>
+</ul>
+</div>
 
-<p>🚧 Under Construction 🚧</p>
+<p>[🚧 Under Construction 🚧]</p>
+<div id="project-objective" class="section level3">
+<h3>Project Objective</h3>
+<p>Through this project, I aim to help venture capitalists improve accuracy of their investments by understanding whether a start up will be successful through machine learning. A “successful” startup is defained as one that would raise series B funding at minimum.</p>
+</div>
+<div id="data" class="section level3">
+<h3>Data</h3>
+<p>For this project, we scraped Crunchbase and LinkedIn for 40,000 founder and startup information from 1968 to 2019.</p>
+<p>These are a few notable observations from the data:</p>
+<p>The total investment from Series B and above take less than 40% of the total investments.</p>
+<p><img src="crunchbase_funding_rounds.png" /></p>
+<p>Most startup investments come from the US, specifically the states of California and New York.</p>
+<p><img src="crunchbase_country.png" /></p>
+<p><img src="crunchbase_state.png" /></p>
+<p>Unsurprisingly, the top 5 categories that receive the most startup investments are: (1) software, (2) mobile, (3) e-commerce, (4) enterprise software and (5) SaaS.</p>
+<p><img src="crunchbase_type.png" /></p>
+</div>
+<div id="methods-and-findings" class="section level3">
+<h3>Methods and Findings</h3>
+<p>The K-fold cross validation result is as follows:</p>
+<p><img src="crunchbase_kfold_result.png" /></p>
+<p><img src="crunchbase_kfold_plot.png" /></p>
+<p>I chose random forest and XGBoost. Random forest has decent performance metrics, and provides feature importance. XGBoost, on the other hand, has both highest accuracy (92.42%) and F1-Score (87.26%).</p>
+<p>The feature importance provided by random forest is as follows:</p>
+<p><img src="crunchbase_feature_imp.png" /></p>
+</div>
+<div id="insights" class="section level3">
+<h3>Insights</h3>
+<ul>
+<li>Even though the number of founder with business degrees is higher, I was able to deduce that the correlation between a founder succeeding if he has a computer science background is higher with good confidence. This can be due to the growing digital/software/data related startups.</li>
+<li>There is a good chance of a founder succeeding if his alma mater is an Ivy-League/Top-School contrary to the popular belief of being a dropout. We hypothesize this can be true given the great alum network or maybe just the nature of the network a founder is exposed to in an Ivy league.</li>
+<li>Number of founded organisations is negatively correlated which can be attributed to distraction.</li>
+<li>More number of founders is negatively correlated to success. This is consistent with the idea: too many views (people) result into poor decisions.</li>
+<li>Startups with highest number of investments are focussed at portfolio diversification as observed in our market basket analysis.</li>
+<li>Most of the largest VC firms finance late stage rounds and tech companies. So more and more tech startups are blooming and most new start-ups are in the tech category.</li>
+</ul>
+</div>
+<div id="next-steps" class="section level3">
+<h3>Next Steps</h3>
+<ul>
+<li>Apply the selected model on new startup (from 2020 and 2021) and perform qualitative analyses to see if the findings are still relevant</li>
+<li>See how COVID-19 affects startup valuation and adjust models to avoid drift.</li>
+</ul>
+</div>
+<div id="artifact" class="section level3">
+<h3>Artifact</h3>
+<ul>
+<li><a href="https://github.com/hnguyen1174/crunchbase_founder_analysis">Github</a></li>
+<li><a href="https://github.com/hnguyen1174/crunchbase_founder_analysis/blob/master/reports/report.pdf">Project report</a></li>
+</ul>
+</div>

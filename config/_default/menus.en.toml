@@ -15,9 +15,15 @@
   weight = 300
   identifier = "about"
   url = "/about/"
-
+  
+  [[main]]
+  name = "NLP News"
+  weight = 400
+  identifier = "nlp_news"
+  url = "/nlp_news/"
+  
   [[main]]
   name = "Contact"
-  weight = 400
+  weight = 500
   identifier = "contact"
   url = "/contact/"

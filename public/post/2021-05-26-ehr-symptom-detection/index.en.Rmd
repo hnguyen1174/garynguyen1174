@@ -1,0 +1,24 @@
+---
+title: "EHR Symptom Detection \U0001F3E5"
+summary: In this project, I use deep learning to classify symptoms in nursing notes (EHR)
+author: Gary Nguyen
+date: '2021-05-26'
+output:
+  blogdown::html_page:
+    highlight: tango
+    toc: true
+slug: []
+thumbnail: "images/nyc_healthcare.jpeg"
+categories:
+  - Project
+tags:
+  - NLP
+  - R
+  - classification
+Description: ''
+Tags: []
+Categories: []
+DisableComments: no
+---
+
+🚧 Under Construction 🚧

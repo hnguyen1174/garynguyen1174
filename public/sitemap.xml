@@ -1,18 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>https://example.com/en/sitemap.xml</loc>
-    
-      <lastmod>2021-03-13T21:47:41+00:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://example.com/ar/sitemap.xml</loc>
-    
-      <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/2021-05-26-crunchbase-founder-analysis/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/2021-05-26-disaster-tweets-detector-under-construction/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/2021-05-26-ehr-symptom-detection/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/2021-05-26-influenza-like-illnesses-map-in-nyc/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/2021-05-26-instacart-market-baskey-analysis/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/nlp/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/project/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/tweets/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/2021-05-26-whiskey-recommendation-engine/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/2021-05-26-yelp-data-challenge/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/about/</loc>
+    <lastmod>2021-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/contact/</loc>
+    <lastmod>2021-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/nlp_news/</loc>
+    <lastmod>2021-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/index/</loc>
+  </url>
+</urlset>
