@@ -7,8 +7,8 @@ title: NLP News
 
 ### Updated: 2021-05-26
 
-1. Introducting 🤗 Accelerate: https://huggingface.co/blog/accelerate-library
-2#
-# #Resources:
+1. Introducing 🤗 Accelerate: https://huggingface.co/blog/accelerate-library
 
-1. hStanford NLP Group: ttps://twitter.com/stanfordnlp
+### Resources:
+
+1. Stanford NLP Group: ttps://twitter.com/stanfordnlp
