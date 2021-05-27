@@ -171,9 +171,60 @@
             </div>
 
             
+<script src="/post/2021-05-26-influenza-like-illnesses-map-in-nyc/index.en_files/header-attrs/header-attrs.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#dataset">Dataset</a></li>
+<li><a href="#visualization-number-of-influenze-like-illnesses-visits-per-100000-residents">Visualization: Number of influenze-like illnesses visits per 100,000 residents</a></li>
+<li><a href="#insigths">Insigths:</a></li>
+<li><a href="#running-the-app">Running the App:</a></li>
+<li><a href="#next-steps">Next Steps:</a></li>
+</ul>
+</div>
 
-<p>🚧 Under Construction 🚧</p>
+<p>[🚧 Under Construction 🚧]</p>
+<div id="dataset" class="section level3">
+<h3>Dataset</h3>
+<p>Total emergency department visits, and visits and admissions for influenza-like and/or pneumonia illness by modified ZIP code tabulation area of patient residence. The dataset includes the following columns:</p>
+<ul>
+<li><code>mod_zcta</code>: modified zip codes</li>
+<li><code>total_ed_visits</code>: count of all emergency department visits</li>
+<li><code>ili_pne_visits</code>: count of influenza-like illness and/or pneumonia visits</li>
+<li><code>ili_pne_admissions</code>: count of influenza-like illness and/or pnuemonia visits admitted to the hospital</li>
+</ul>
+</div>
+<div id="visualization-number-of-influenze-like-illnesses-visits-per-100000-residents" class="section level3">
+<h3>Visualization: Number of influenze-like illnesses visits per 100,000 residents</h3>
+<div id="at-the-onset-of-covid" class="section level4">
+<h4>04/01/2020: At the onset of COVID</h4>
+<p><img src="ili_040120.png" /></p>
+</div>
+<div id="today" class="section level4">
+<h4>05/06/2021: Today</h4>
+<p><img src="ili_050621.png" /></p>
+</div>
+</div>
+<div id="insigths" class="section level3">
+<h3>Insigths:</h3>
+<ul>
+<li>Number of influenza-like and/or pneumonia illness admission increases in tandem with COVID cases.</li>
+<li>The boroughs (Queen and Bronx) have the highest cases</li>
+</ul>
+</div>
+<div id="running-the-app" class="section level3">
+<h3>Running the App:</h3>
+<p>Step 1: Clone the repo: <code>https://github.com/hnguyen1174/shiny_contest_2021.git</code> on the command line.
+Step 2: cd <code>shiny_contest_2021</code>
+Step 3: In the R console, <code>library(shiny)</code> and then <code>shiny::runApp()</code>.</p>
+</div>
+<div id="next-steps" class="section level3">
+<h3>Next Steps:</h3>
+<ul>
+<li>Build a Lasso or time-series model to predict infection rate per borough</li>
+<li>Deploy the app to <code>https://www.shinyapps.io/</code>.</li>
+</ul>
+</div>
 </div>
         <div class="post-footer">
             <div class="info">
