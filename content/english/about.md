@@ -15,4 +15,4 @@ Originally from Ho Chi Minh City, Vietnam 🇻🇳, I earned a BA in Economics a
 
 In my free time, I love hiking, photography and jogging along the Hudson river piers.
 
-An updated copy of my resume can be found [here](https://bit.ly/3yETioE).
+An updated copy of my resume can be found [here](https://bit.ly/3yIkNxC).
