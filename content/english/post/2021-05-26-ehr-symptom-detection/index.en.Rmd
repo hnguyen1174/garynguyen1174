@@ -1,5 +1,5 @@
 ---
-title: "EHR Symptom Detection \U0001F3E5"
+title: "EHR Symptom Detection"
 summary: In this project, I use deep learning to classify symptoms in nursing notes (EHR)
 author: Gary Nguyen
 date: '2021-05-26'

@@ -1,5 +1,5 @@
 ---
-title: "Instacart Market Baskey Analysis \U0001F6D2"
+title: "Instacart Market Baskey Analysis"
 summary: In this project, I predict next purchases from Instacart's customer purchases data using XGBoost.
 author: Gary Nguyen
 date: '2021-05-26'
