@@ -1,5 +1,5 @@
 ---
-title: "Yelp Data Challenge \U0001F354"
+title: "Yelp Data Challenge"
 summary: Yelp Data Challenge
 author: Gary Nguyen
 date: '2021-05-26'
@@ -20,3 +20,7 @@ DisableComments: no
 ---
 
 🚧 Under Construction 🚧
+
+### Artifacts
+
+* [Github](https://github.com/hnguyen1174/Yelp_data_challenge-1)

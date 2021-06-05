@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html  dir="ltr" lang="en" data-theme=""><head>
+    <title> Gary Nguyen | Quuppa Tracking Device and Group Dynamics in Education 🏫 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.83.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="I&#39;m a data scientist and NLP practitioner based in NYC">
+    
+    
+    
+    
+    <link rel="stylesheet"
+        href="/css/main.min.4e2e214d42cc761f5762acb664d180d75d13cbc9feffa1f8c62a90f057de81d3.css"
+        integrity="sha256-Ti4hTULMdh9XYqy2ZNGA110Ty8n&#43;/6H4xiqQ8FfegdM="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    
+    <link rel="stylesheet"
+        href="/css/markupHighlight.min.f798cbda9aaa38f89eb38be6414bd082cfd71a6780375cbf67b6d2fb2b96491e.css"
+        integrity="sha256-95jL2pqqOPies4vmQUvQgs/XGmeAN1y/Z7bS&#43;yuWSR4="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="/post/2021-05-27-quuppa-tracking-device-and-group-dynamics-in-education/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="/js/anatole-header.min.0c05c0a90d28c968a1cad4fb31abd0b8e1264e788ccefed022ae1d3b6f627514.js"
+            integrity="sha256-DAXAqQ0oyWihytT7MavQuOEmTniMzv7QIq4dO29idRQ="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+                integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Quuppa Tracking Device and Group Dynamics in Education 🏫"/>
+<meta name="twitter:description" content="I applied three clustering algorithms, namely k-means clustering, Gaussian Mixture Model (GMM) with expectation maximization, and mean-shift algorithm to analyze the Quuppa tracking location data in order to understand group membership and dynamics in an educational setting."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="/images/profile_new.jpg" alt="profile picture">
+            <h3 title=""><a href="/">Welcome, I&#39;m Gary</a></h3>
+            <div class="description">
+                <p>I'm a data scientist and NLP practitioner based in NYC</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/hnguyen1174/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/hnguyen1174" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:han2114@columbia.edu" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Gary Nguyen  2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About Me</a></li>
+        
+            
+            <li><a 
+                   href="/nlp_news/"
+                        
+                   title="">NLP News</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <img class="post-thumbnail" src="/images/education.jpeg" alt="Thumbnail image">
+            
+            <div class="post-title">
+                <h3>Quuppa Tracking Device and Group Dynamics in Education 🏫</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> 
+                                                2021-05-27
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">4-minute read</span>
+                    </div>
+                
+            </div>
+
+            
+<script src="/post/2021-05-27-quuppa-tracking-device-and-group-dynamics-in-education/index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#impact">Impact</a></li>
+<li><a href="#future-work">Future Work</a></li>
+<li><a href="#artifact">Artifact</a></li>
+</ul>
+</div>
+
+<p>[🚧 Under Construction 🚧]</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this short research project, I applied three clustering algorithms, namely k-means clustering, Gaussian Mixture Model (GMM) with expectation maximization, and mean-shift algorithm to analyze the Quuppa tracking location data in order to understand group membership and dynamics in an educational setting. On a higher level, I hope to understand how location-based data is used to further smart education and learning. Clustering is valuable in understanding how participants interact, form groups and change group memberships over time. The dataset I used is provided by EdLab, Teachers College, containing movements of 26 distinct sensors 19 seconds. I also provided briefly the advantages and disadvantages of each clustering algorithm.</p>
+<p>Analyzing location-based data has long been employed to understand smart education. Smart education is defined as the prominent paradigm in global education with the aim of improving learner’s quality of lifelong learning. The focus of smart education is contextual, personalized and seamless learning, all of which are supported by the Quuppa tracking system data analysis. According to NMC, IoT, wearable technology and location-based data analysis enhances the advancement of “contextual and seamless learning” by synchronizing people and objects. “Wearable technology can integrate the location information, exercise log, social media interaction and visual reality tools into the learning.” To support that purpose, according to Bartels, smart computing is the latest cycle in tech disruption, which fuels the rise of smart learning. It blends all aspects such as software, hardware, network, smart devices, sensors, big data and intelligent system to materialize innovative applications in education. “All these technologies can effectively support learning to happen in different situations. Above all, the advancement of computing technologies leads smart computing to a new dimension and improves the ways of learning”.</p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>The dataset contains 96776 location data points from 26 distinct trackers in 19 seconds. After converting the log files into a json dictionary, I took the X coordinate, Y coordinate and the recorded time, as well as the trackers’ id and their names, to create a data frame for analysis. I dropped the data points where ‘zones’ is null (there are nine such instances) because I suspect these were technological errors. The overall density in 2D &amp; 3D space is visualized below:</p>
+<p><img src="quuppa_density.png" /></p>
+<p>The individual trackers scatter plots are visualized below.</p>
+<p><img src="quuppa_movements.png" /></p>
+</div>
+<div id="methods" class="section level2">
+<h2>Methods</h2>
+<p>For this project, I used three main methods to analyze group dynamics: k-mean clustering, GMM with expectation
+maximization and mean-shift algorithm.</p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<p>K-means and GMM Comparison with increasing number of predefined clusters:</p>
+<p><img src="quuppa_result_1.png" />
+<img src="quuppa_result_2.png" /></p>
+<p>Mean-shift Clustering Algorithm</p>
+<p><img src="quuppa_result_3.png" /></p>
+</div>
+<div id="impact" class="section level2">
+<h2>Impact</h2>
+<p>After taking all factors into considerations, Mean-shift and GMM are best candidate models for analyze tracking data by Quuppa. There is a trade-off: while GMM can work with mixed memberships and has a probability component, it needs the number of cluster as human input, which is more prone to errors. Mean-shift algorithm can detect clusters without a priori knowledge, given a bandwidth specified by industry knowledge. However, mean-shift has a tendency of taking noises into its clustering. In both case, the chosen clustering algorithm will give sufficiently good insights into the group membership of each participants in a discrete snapshot in time. Educators can use this information to foster collaborations in their events, or to design the layout of the venue to achieve desired group outcomes. Another application is to design activities to break up pre-formed groups and facilitate cross-group collaborations to benefits everyone involved. Facilitators can be assigned, for example, to improve group dynamics and lend support to participants that need to join a group.</p>
+</div>
+<div id="future-work" class="section level2">
+<h2>Future Work</h2>
+<p>The method described in this research assumes that the different snapshots are independent of each other (i.e. each snapshot is discrete), and therefore group membership in one snapshot doesn’t affect the others. This is not true in practical situations where group membership may change depend on preceding group events. Therefore, a natural next step is to apply Dynamic Mixture Models (DMM) to analyze the change in group dynamics through time. DMM can be applied to time series and can explain similarities between movements of participant pairs, which cannot be explained by a single snapshot clustering.</p>
+</div>
+<div id="artifact" class="section level2">
+<h2>Artifact</h2>
+<ul>
+<li><a href="https://github.com/hnguyen1174/location-data-clustering-analysis">Github</a></li>
+</ul>
+</div>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="/js/medium-zoom.min.83cb1dd5fea8d42d87d1e601a07faa73089ad0ef9ccfe5daf6041289ebcc4e46.js"
+        integrity="sha256-g8sd1f6o1C2H0eYBoH&#43;qcwia0O&#43;cz&#43;Xa9gQSievMTkY="
+        crossorigin="anonymous"></script></body>
+
+</html>

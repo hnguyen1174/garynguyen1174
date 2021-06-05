@@ -1,5 +1,5 @@
 ---
-title: "Influenza-Like Illnesses Map in NYC \U0001F34E"
+title: "Influenza-Like Illnesses Map in NYC"
 summary: This project visualizes and predicts influenza-like ilnesses in NYC neighborhoods. 
 author: Gary Nguyen
 date: '2021-05-26'
@@ -42,16 +42,16 @@ Total emergency department visits, and visits and admissions for influenza-like 
 
 ![](ili_050621.png)
 
-### Insigths:
+### Insights:
 
 * Number of influenza-like and/or pneumonia illness admission increases in tandem with COVID cases.
 * The boroughs (Queen and Bronx) have the highest cases
 
 ### Running the App:
 
-Step 1: Clone the repo: `https://github.com/hnguyen1174/shiny_contest_2021.git` on the command line.
-Step 2: cd `shiny_contest_2021`
-Step 3: In the R console, `library(shiny)` and then `shiny::runApp()`.
+* Step 1: Clone the repo: `https://github.com/hnguyen1174/shiny_contest_2021.git` on the command line.
+* Step 2: cd `shiny_contest_2021`
+* Step 3: In the R console, `library(shiny)` and then `shiny::runApp()`.
 
 ### Next Steps:
 
