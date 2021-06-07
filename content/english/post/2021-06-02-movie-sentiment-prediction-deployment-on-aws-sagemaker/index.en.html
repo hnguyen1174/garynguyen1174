@@ -1,0 +1,144 @@
+---
+title: Movie Sentiment Prediction Deployment on AWS SageMaker
+author: Gary Nguyen
+date: '2021-06-02'
+slug: []
+thumbnail: "images/movie.jpeg"
+categories:
+  - Project
+output:
+  blogdown::html_page:
+    highlight: tango
+    toc: true
+tags:
+  - NLP
+  - AWS
+  - SageMaker
+  - classification
+Description: ''
+Tags: []
+Categories: []
+DisableComments: no
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#general-process">General Process</a></li>
+<li><a href="#the-data">The Data</a></li>
+<li><a href="#the-model">The model</a></li>
+<li><a href="#deploy-the-model-in-sagemaker">Deploy the model in SageMaker:</a></li>
+<li><a href="#deploy-the-model-using-lambda-function-and-api-gateway">Deploy the model using <code>Lambda function</code> and <code>API Gateway</code></a></li>
+<li><a href="#simple-interface">Simple Interface</a></li>
+<li><a href="#artifact">Artifact</a></li>
+</ul>
+</div>
+
+<p><a href="https://github.com/hnguyen1174/sagemaker-movie-reviews"><img src="https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub" alt="GitHub" /></a></p>
+<p>Technologies:</p>
+<ul>
+<li>Python (<code>torch</code>) for LSTM</li>
+<li>I trained the models with <code>AWS SageMaker</code>.</li>
+</ul>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<p>The goal of the project is to have a simple web page which a user can use to enter a movie review. The web page will then send the review off to our deployed model on <strong>AWS SageMaker</strong> which will predict the sentiment of the entered review.</p>
+</div>
+<div id="general-process" class="section level3">
+<h3>General Process</h3>
+<ol style="list-style-type: decimal">
+<li>Download or otherwise retrieve the data.</li>
+<li>Process / Prepare the data.</li>
+<li>Upload the processed data to S3.</li>
+<li>Train a chosen model.</li>
+<li>Test the trained model (typically using a batch transform job).</li>
+<li>Deploy the trained model.</li>
+<li>Use the deployed model.</li>
+</ol>
+</div>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+<p>I used the <a href="http://ai.stanford.edu/~amaas/data/sentiment/">IMDb dataset</a>.</p>
+</div>
+<div id="the-model" class="section level3">
+<h3>The model</h3>
+<p>I will use a simple LSTM model:</p>
+<pre><code>class LSTMClassifier(nn.Module):
+
+    def __init__(self, embedding_dim, hidden_dim, vocab_size):
+        &quot;&quot;&quot;
+        Initialize the model by settingg up the various layers.
+        &quot;&quot;&quot;
+        super(LSTMClassifier, self).__init__()
+
+        self.embedding = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
+        self.lstm = nn.LSTM(embedding_dim, hidden_dim)
+        self.dense = nn.Linear(in_features=hidden_dim, out_features=1)
+        self.sig = nn.Sigmoid()
+        
+        self.word_dict = None
+
+    def forward(self, x):
+        &quot;&quot;&quot;
+        Perform a forward pass of our model on some input.
+        &quot;&quot;&quot;
+        x = x.t()
+        lengths = x[0,:]
+        reviews = x[1:,:]
+        embeds = self.embedding(reviews)
+        lstm_out, _ = self.lstm(embeds)
+        out = self.dense(lstm_out)
+        out = out[lengths - 1, range(len(lengths))]
+        return self.sig(out.squeeze())</code></pre>
+</div>
+<div id="deploy-the-model-in-sagemaker" class="section level3">
+<h3>Deploy the model in SageMaker:</h3>
+<pre><code>from sagemaker.pytorch import PyTorch
+
+estimator = PyTorch(entry_point=&quot;train.py&quot;,
+                    source_dir=&quot;train&quot;,
+                    role=role,
+                    framework_version=&#39;0.4.0&#39;,
+                    train_instance_count=1,
+                    train_instance_type=&#39;ml.p2.xlarge&#39;, #&#39;ml.p2.xlarge&#39;,
+                    hyperparameters={
+                        &#39;epochs&#39;: 10,
+                        &#39;hidden_dim&#39;: 200,
+                    })
+                    
+estimator.fit({&#39;training&#39;: input_data})
+
+predictor = estimator.deploy(initial_instance_count=1, instance_type=&#39;ml.p2.xlarge&#39;)</code></pre>
+<p>and then use the <code>predictor</code> to predict on processed text reviews:</p>
+<pre><code>test_review = &#39;This movie is fantastic!&#39;
+
+test_review_processed = review_to_words(test_review)
+processed_test_review, lengh_test_review = convert_and_pad(word_dict, test_review_processed)
+test_data = np.expand_dims(
+    np.hstack((lengh_test_review, processed_test_review)), 
+    axis=0)
+    
+predictor.predict(test_data)</code></pre>
+</div>
+<div id="deploy-the-model-using-lambda-function-and-api-gateway" class="section level3">
+<h3>Deploy the model using <code>Lambda function</code> and <code>API Gateway</code></h3>
+<p><img src="aws.png" /></p>
+<ul>
+<li>On the far right, we have the model in Python.</li>
+<li>On the far left is the web app that reads a movie review, sends it off via a URL and returns a positive or negative sentiment prediction.</li>
+<li>In the middle, we have a Lambda function, which is a Python function that can be executed whenever an event occurs. I will give this function permission to send and receive data from a SageMaker endpoint.</li>
+<li>Lastly, the <strong>method</strong> I will use to execute the Lambda function is an endpoint that we will create using API Gateway. This endpoint will be a URL that listens for data.</li>
+</ul>
+</div>
+<div id="simple-interface" class="section level3">
+<h3>Simple Interface</h3>
+<p><img src="app.png" /></p>
+</div>
+<div id="artifact" class="section level3">
+<h3>Artifact</h3>
+<ul>
+<li><a href="https://github.com/hnguyen1174/DisasterTweetsDetector">Github</a>)</li>
+</ul>
+</div>
