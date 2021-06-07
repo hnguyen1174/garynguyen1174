@@ -176,6 +176,7 @@
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
+<li><a href="#challenges">Challenges</a></li>
 <li><a href="#data">Data</a></li>
 <li><a href="#methods">Methods</a></li>
 <li><a href="#results">Results</a></li>
@@ -185,11 +186,14 @@
 </ul>
 </div>
 
-<p>[🚧 Under Construction 🚧]</p>
+<p><a href="https://github.com/hnguyen1174/location-data-clustering-analysis/blob/master/notebooks/EdLab_Quuppa.ipynb"><img src="https://img.shields.io/badge/Jupyter-Models-blue?logo=Jupyter" alt="Models" /></a></p>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>In this short research project, I applied three clustering algorithms, namely k-means clustering, Gaussian Mixture Model (GMM) with expectation maximization, and mean-shift algorithm to analyze the Quuppa tracking location data in order to understand group membership and dynamics in an educational setting. On a higher level, I hope to understand how location-based data is used to further smart education and learning. Clustering is valuable in understanding how participants interact, form groups and change group memberships over time. The dataset I used is provided by EdLab, Teachers College, containing movements of 26 distinct sensors 19 seconds. I also provided briefly the advantages and disadvantages of each clustering algorithm.</p>
-<p>Analyzing location-based data has long been employed to understand smart education. Smart education is defined as the prominent paradigm in global education with the aim of improving learner’s quality of lifelong learning. The focus of smart education is contextual, personalized and seamless learning, all of which are supported by the Quuppa tracking system data analysis. According to NMC, IoT, wearable technology and location-based data analysis enhances the advancement of “contextual and seamless learning” by synchronizing people and objects. “Wearable technology can integrate the location information, exercise log, social media interaction and visual reality tools into the learning.” To support that purpose, according to Bartels, smart computing is the latest cycle in tech disruption, which fuels the rise of smart learning. It blends all aspects such as software, hardware, network, smart devices, sensors, big data and intelligent system to materialize innovative applications in education. “All these technologies can effectively support learning to happen in different situations. Above all, the advancement of computing technologies leads smart computing to a new dimension and improves the ways of learning”.</p>
+<p>In this short research project, I applied three clustering algorithms, namely <strong>k-means clustering</strong>, <strong>Gaussian Mixture Model (GMM) with expectation maximization</strong>, and <strong>mean-shift algorithm</strong> to analyze the Quuppa tracking location data in order to understand <strong>group membership and dynamics in an educational setting</strong>. On a higher level, I hope to understand how location-based data is used to further smart education and learning. Clustering is valuable in understanding how participants interact, form groups and change group memberships over time. The dataset I used is provided by EdLab, Teachers College, containing movements of 26 distinct sensors 19 seconds. I also provided briefly the advantages and disadvantages of each clustering algorithm.</p>
+</div>
+<div id="challenges" class="section level2">
+<h2>Challenges</h2>
+<p>Analyzing location-based data has long been employed to understand smart education. Smart education is defined as the prominent paradigm in global education with the aim of improving learner’s quality of lifelong learning. The focus of smart education is contextual, personalized and seamless learning, all of which are supported by the Quuppa tracking system data analysis. According to NMC, IoT, wearable technology and location-based data analysis enhances the advancement of “contextual and seamless learning” by synchronizing people and objects. “Wearable technology can integrate the location information, exercise log, social media interaction and visual reality tools into the learning.” To support that purpose, according to Bartels, smart computing is the latest cycle in tech disruption, which fuels the rise of smart learning. It blends all aspects such as software, hardware, network, smart devices, sensors, big data and intelligent system to materialize innovative applications in education.</p>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
@@ -213,7 +217,7 @@ maximization and mean-shift algorithm.</p>
 </div>
 <div id="impact" class="section level2">
 <h2>Impact</h2>
-<p>After taking all factors into considerations, Mean-shift and GMM are best candidate models for analyze tracking data by Quuppa. There is a trade-off: while GMM can work with mixed memberships and has a probability component, it needs the number of cluster as human input, which is more prone to errors. Mean-shift algorithm can detect clusters without a priori knowledge, given a bandwidth specified by industry knowledge. However, mean-shift has a tendency of taking noises into its clustering. In both case, the chosen clustering algorithm will give sufficiently good insights into the group membership of each participants in a discrete snapshot in time. Educators can use this information to foster collaborations in their events, or to design the layout of the venue to achieve desired group outcomes. Another application is to design activities to break up pre-formed groups and facilitate cross-group collaborations to benefits everyone involved. Facilitators can be assigned, for example, to improve group dynamics and lend support to participants that need to join a group.</p>
+<p>After taking all factors into considerations, mean-shift and GMM are best candidate models for analyze tracking data by Quuppa. There is a trade-off: while GMM can work with mixed memberships and has a probability component, it needs the number of cluster as human input, which is more prone to errors. Mean-shift algorithm can detect clusters without a priori knowledge, given a bandwidth specified by industry knowledge. However, mean-shift has a tendency of taking noises into its clustering. In both case, the chosen clustering algorithm will give sufficiently good insights into the group membership of each participants in a discrete snapshot in time. Educators can use this information to foster collaborations in their events, or to design the layout of the venue to achieve desired group outcomes. Another application is to design activities to break up pre-formed groups and facilitate cross-group collaborations to benefits everyone involved. Facilitators can be assigned, for example, to improve group dynamics and lend support to participants that need to join a group.</p>
 </div>
 <div id="future-work" class="section level2">
 <h2>Future Work</h2>

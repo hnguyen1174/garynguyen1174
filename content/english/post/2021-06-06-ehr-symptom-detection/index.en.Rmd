@@ -21,6 +21,8 @@ Categories: []
 DisableComments: no
 ---
 
+[![GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub)](https://github.com/hnguyen1174/ehr-symptom-detection)
+
 Technologies:
 
 * Python (`transformers` and `transformers_interpret`) for BERT model building
@@ -116,3 +118,4 @@ I also put together a `streamlit` application that applies the trained BERT mode
 
 * [Github](https://github.com/hnguyen1174/ehr-symptom-detection)
 * [Project report (draft)](https://github.com/hnguyen1174/ehr-symptom-detection/blob/master/reports/Paper%20Draft_V3.pdf)
+* [Huggingface Models](https://huggingface.co/garynguyen1174/disaster_tweet_bert)

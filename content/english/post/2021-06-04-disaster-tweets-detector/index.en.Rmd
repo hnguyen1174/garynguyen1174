@@ -16,6 +16,9 @@ tags:
   - NLP
 ---
 
+[![Colab](https://img.shields.io/badge/Colab-Run_in_Google_Colab-blue?logo=Google&logoColor=FDBA18)]()
+[![GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub)](https://github.com/hnguyen1174/DisasterTweetsDetector)
+
 Technologies:
 
 * Python (`transformers` and `transformers_interpret`) for BERT model building
