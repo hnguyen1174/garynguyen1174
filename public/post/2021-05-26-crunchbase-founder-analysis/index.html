@@ -164,7 +164,7 @@
                                                 2021-05-26
                                            </span>
                         <em class="fas fa-stopwatch"></em>
-                        <span class="reading-time">2-minute read</span>
+                        <span class="reading-time">3-minute read</span>
                     </div>
                 
             </div>
@@ -183,21 +183,31 @@
 </ul>
 </div>
 
-<p>[🚧 Under Construction 🚧]</p>
+<p><a href="https://github.com/hnguyen1174/crunchbase_founder_analysis"><img src="https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub" alt="GitHub" /></a></p>
+<p>Technologies:</p>
+<ul>
+<li>Python (<code>sklearn</code>) for logistic regression, SVC/SVM, random forest and K-fold cross validation</li>
+</ul>
 <div id="project-objective" class="section level3">
 <h3>Project Objective</h3>
-<p>Through this project, I aim to help venture capitalists improve accuracy of their investments by understanding whether a start up will be successful through machine learning. A “successful” startup is defained as one that would raise series B funding at minimum.</p>
+<p>Through this project, I aim to help venture capitalists improve accuracy of their investments by understanding whether a start up will be successful through machine learning. A “successful” start-up is defined as one that would raise series B funding at the minimum.</p>
 </div>
 <div id="data" class="section level3">
 <h3>Data</h3>
-<p>For this project, we scraped Crunchbase and LinkedIn for 40,000 founder and startup information from 1968 to 2019.</p>
+<p>For this project, I scraped <a href="https://www.crunchbase.com/">Crunchbase</a> and gathered data from <a href="https://www.linkedin.com/">LinkedIn</a> for 40,000 founders and start-ups records from 1968 to 2019.</p>
 <p>These are a few notable observations from the data:</p>
-<p>The total investment from Series B and above take less than 40% of the total investments.</p>
+<ol style="list-style-type: decimal">
+<li>The total investments from Series B and above take less than 40% of the total investments in the dataset.</li>
+</ol>
 <p><img src="crunchbase_funding_rounds.png" /></p>
-<p>Most startup investments come from the US, specifically the states of California and New York.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Most startup investments come from the US, specifically the states of California and New York.</li>
+</ol>
 <p><img src="crunchbase_country.png" /></p>
 <p><img src="crunchbase_state.png" /></p>
-<p>Unsurprisingly, the top 5 categories that receive the most startup investments are: (1) software, (2) mobile, (3) e-commerce, (4) enterprise software and (5) SaaS.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Unsurprisingly, the top 5 categories that receive the most startup investments are: (1) software, (2) mobile, (3) e-commerce, (4) enterprise software and (5) SaaS.</li>
+</ol>
 <p><img src="crunchbase_type.png" /></p>
 </div>
 <div id="methods-and-findings" class="section level3">

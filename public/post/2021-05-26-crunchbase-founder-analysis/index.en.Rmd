@@ -20,35 +20,35 @@ Categories: []
 DisableComments: no
 ---
 
-[🚧 Under Construction 🚧]
+[![GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub)](https://github.com/hnguyen1174/crunchbase_founder_analysis)
+
+Technologies:
+
+* Python (`sklearn`) for logistic regression, SVC/SVM, random forest and K-fold cross validation
 
 ### Project Objective
 
-Through this project, I aim to help venture capitalists improve accuracy of their investments by understanding whether a start up will be successful through machine learning. A "successful" startup is defained as one that would raise series B funding at minimum.
-
-
+Through this project, I aim to help venture capitalists improve accuracy of their investments by understanding whether a start up will be successful through machine learning. A "successful" start-up is defined as one that would raise series B funding at the minimum.
 
 ### Data
 
-For this project, we scraped Crunchbase and LinkedIn for 40,000 founder and startup information from 1968 to 2019.
+For this project, I scraped [Crunchbase](https://www.crunchbase.com/) and gathered data from [LinkedIn](https://www.linkedin.com/) for 40,000 founders and start-ups records from 1968 to 2019.
 
 These are a few notable observations from the data:
 
-The total investment from Series B and above take less than 40% of the total investments. 
+1. The total investments from Series B and above take less than 40% of the total investments in the dataset.
 
-![](crunchbase_funding_rounds.png)
+  ![](crunchbase_funding_rounds.png)
 
-Most startup investments come from the US, specifically the states of California and New York.
+2. Most startup investments come from the US, specifically the states of California and New York.
 
-![](crunchbase_country.png)
+  ![](crunchbase_country.png)
 
-![](crunchbase_state.png)
+  ![](crunchbase_state.png)
 
+3. Unsurprisingly, the top 5 categories that receive the most startup investments are: (1) software, (2) mobile, (3) e-commerce, (4) enterprise software and (5) SaaS.
 
-Unsurprisingly, the top 5 categories that receive the most startup investments are: (1) software, (2) mobile, (3) e-commerce, (4) enterprise software and (5) SaaS.
-
-![](crunchbase_type.png)
-
+  ![](crunchbase_type.png)
 
 ### Methods and Findings
 

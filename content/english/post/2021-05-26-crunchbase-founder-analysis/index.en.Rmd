@@ -20,49 +20,64 @@ Categories: []
 DisableComments: no
 ---
 
-[🚧 Under Construction 🚧]
+[![GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub)](https://github.com/hnguyen1174/crunchbase_founder_analysis)
+
+Technologies:
+
+* Python (`sklearn`) for logistic regression, SVC/SVM, random forest and K-fold cross validation
 
 ### Project Objective
 
-Through this project, I aim to help venture capitalists improve accuracy of their investments by understanding whether a start up will be successful through machine learning. A "successful" startup is defained as one that would raise series B funding at minimum.
-
-
+Through this project, I aim to help venture capitalists improve accuracy of their investments by understanding whether a start up will be successful through machine learning. A "successful" start-up is defined as one that would raise series B funding at the minimum.
 
 ### Data
 
-For this project, we scraped Crunchbase and LinkedIn for 40,000 founder and startup information from 1968 to 2019.
+For this project, I scraped [Crunchbase](https://www.crunchbase.com/) and gathered data from [LinkedIn](https://www.linkedin.com/) for 40,000 founders and start-ups records from 1968 to 2019.
 
 These are a few notable observations from the data:
 
-The total investment from Series B and above take less than 40% of the total investments. 
+1. The total investments from Series B and above take less than 40% of the total investments in the dataset.
+  
+  <p align="center">
+    <img src="crunchbase_funding_rounds.png" alt="drawing" width="500"/>
+  </p>
 
-![](crunchbase_funding_rounds.png)
+2. Most startup investments come from the US, specifically the states of California and New York.
 
-Most startup investments come from the US, specifically the states of California and New York.
+  <p align="center">
+    <img src="crunchbase_country.png" alt="drawing" width="500"/>
+  </p>
+  
+  <p align="center">
+    <img src="crunchbase_state.png" alt="drawing" width="500"/>
+  </p>
 
-![](crunchbase_country.png)
-
-![](crunchbase_state.png)
-
-
-Unsurprisingly, the top 5 categories that receive the most startup investments are: (1) software, (2) mobile, (3) e-commerce, (4) enterprise software and (5) SaaS.
-
-![](crunchbase_type.png)
-
+3. Unsurprisingly, the top 5 categories that receive the most startup investments are: (1) software, (2) mobile, (3) e-commerce, (4) enterprise software and (5) SaaS.
+  
+  <p align="center">
+    <img src="crunchbase_type.png" alt="drawing" width="500"/>
+  </p>
 
 ### Methods and Findings
 
 The K-fold cross validation result is as follows:
 
-![](crunchbase_kfold_result.png)
+|Model Name|Accuracy|Recall|F-1 Score|
+|:--:|:--:|:--:|:--:|
+|Logistic Regression|0.83|0.60|0.68|
+|XGBoost|0.08|0.92|0.88|0.87|
+|Random Forest|0.91|0.82|0.85|
+|Support Vector Classifier|0.83|0.62|0.69|
 
-![](crunchbase_kfold_plot.png)
+<p align="center">
+  <img src="crunchbase_kfold_plot.png" alt="drawing" width="500"/>
+</p>
 
-I chose random forest and XGBoost. Random forest has decent performance metrics, and provides feature importance. XGBoost, on the other hand, has both highest accuracy (92.42%) and F1-Score (87.26%).
+I chose **random forest** and **XGBoost**. Random forest has decent performance metrics, and provides feature importance. XGBoost, on the other hand, has both highest accuracy (92.42%) and F1-Score (87.26%).
 
-The feature importance provided by random forest is as follows:
+The feature importances provided by random forest are as follows:
 
-![](crunchbase_feature_imp.png)
+<img src="crunchbase_feature_imp.png" alt="drawing" width="500"/>
 
 ### Insights
 
@@ -73,12 +88,11 @@ The feature importance provided by random forest is as follows:
 * Startups with highest number of investments are focussed at portfolio diversification as observed in our market basket analysis.
 * Most of the largest VC firms finance late stage rounds and tech companies. So more and more tech startups are blooming and most new start-ups are in the tech category.
 
-
 ### Next Steps
 
-* Apply the selected model on new startup (from 2020 and 2021) and perform qualitative analyses to see if the findings are still relevant
-* See how COVID-19 affects startup valuation and adjust models to avoid drift.
-* Refactor the repo and provide unit tests
+* [ ] Apply the selected model on new startup (from 2020 and 2021) and perform qualitative analyses to see if the findings are still relevant
+* [ ] See how COVID-19 affects startup valuation and adjust models to avoid drift.
+* [ ] Refactor the repo and provide unit tests
 
 ### Artifact
 
