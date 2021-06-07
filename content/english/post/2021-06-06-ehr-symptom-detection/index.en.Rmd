@@ -22,10 +22,11 @@ DisableComments: no
 ---
 
 Technologies:
-* Python for BERT model building
-* Streamlit for application
-* R (for data cleaning, visualization and CNN/RNN model building).
-* R-Shiny for visualizing the training progresses and NimbleMiner for training set building
+
+* Python (`transformers` and `transformers_interpret`) for BERT model building
+* Streamlit (`streamlit`) for application
+* R (`tidyverse`, `keras`) for data cleaning, visualization and CNN/RNN model building
+* R-Shiny (`shiny`) for visualizing the training progresses and NimbleMiner for training set building
 
 ### Introduction
 
