@@ -76,7 +76,7 @@ We experiment with four different architectures: (1) a 1-layer embedding and 4-l
 
 ### Results:
 
-We found that deep learning models, on average, produce better performance when compared to traditional machine learning methods. A full comparison can be found in the table below.
+We found that deep learning models, on average, produce better performance when compared to traditional machine learning methods. A full accuracy comparison can be found in the table below.
 
 |Symptom|Logistic Regression|Random Forest|4-layer CNN|fastText embeddings + 4-layer CNN|4-layer CNN + Bidirectional LSTM|BERT, 2-layer CNN and LSTM|
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
