@@ -21,6 +21,13 @@ Categories: []
 DisableComments: no
 ---
 
+Technologies:
+
+* Python (`transformers` and `transformers_interpret`) for BERT model building
+* Streamlit (`streamlit`) for application
+* R (`tidyverse`, `keras`) for data cleaning, visualization and CNN/RNN model building
+* R-Shiny (`shiny`) for visualizing the training progresses and NimbleMiner for training set building
+
 ### Introduction
 
 #### Overview
@@ -96,6 +103,14 @@ Since deep learning models outperform the baseline models, below we present the 
 ### Future Extensions
 
 As EHR is becoming ubiquitous and machine learning algorithms for natural language processing are developing very quickly, there are ample opportunities for improvements. There are more features available in our dataset, such as patients’ ages, time and dates of the discharge notes and so on. We can potentially use these features to impose a temporal structure on our data set to not only predict a symptom, but also predict when it will occur in the future.   
+
+### Understanding Symptoms
+
+#### Streamlit application
+
+I also put together a `streamlit` application that applies the trained BERT model to predict whether a note has any of the five symptoms (dyspnea, chest pain, nausea, fatigue and cough). I will deploy this application when receiving appropriate infrastructure from `streamlit`.
+
+![](demo.gif)
 
 ### Artifact
 

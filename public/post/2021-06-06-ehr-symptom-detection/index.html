@@ -180,10 +180,18 @@
 <li><a href="#method">Method</a></li>
 <li><a href="#results">Results:</a></li>
 <li><a href="#future-extensions">Future Extensions</a></li>
+<li><a href="#understanding-symptoms">Understanding Symptoms</a></li>
 <li><a href="#artifact">Artifact</a></li>
 </ul>
 </div>
 
+<p>Technologies:</p>
+<ul>
+<li>Python (<code>transformers</code> and <code>transformers_interpret</code>) for BERT model building</li>
+<li>Streamlit (<code>streamlit</code>) for application</li>
+<li>R (<code>tidyverse</code>, <code>keras</code>) for data cleaning, visualization and CNN/RNN model building</li>
+<li>R-Shiny (<code>shiny</code>) for visualizing the training progresses and NimbleMiner for training set building</li>
+</ul>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
 <div id="overview" class="section level4">
@@ -417,6 +425,14 @@ We experiment with four different architectures: (1) a 1-layer embedding and 4-l
 <div id="future-extensions" class="section level3">
 <h3>Future Extensions</h3>
 <p>As EHR is becoming ubiquitous and machine learning algorithms for natural language processing are developing very quickly, there are ample opportunities for improvements. There are more features available in our dataset, such as patients’ ages, time and dates of the discharge notes and so on. We can potentially use these features to impose a temporal structure on our data set to not only predict a symptom, but also predict when it will occur in the future.</p>
+</div>
+<div id="understanding-symptoms" class="section level3">
+<h3>Understanding Symptoms</h3>
+<div id="streamlit-application" class="section level4">
+<h4>Streamlit application</h4>
+<p>I also put together a <code>streamlit</code> application that applies the trained BERT model to predict whether a note has any of the five symptoms (dyspnea, chest pain, nausea, fatigue and cough). I will deploy this application when receiving appropriate infrastructure from <code>streamlit</code>.</p>
+<p><img src="demo.gif" /></p>
+</div>
 </div>
 <div id="artifact" class="section level3">
 <h3>Artifact</h3>

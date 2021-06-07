@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Disaster Tweets Detector</title>
+      <link>/post/2021-06-04-disaster-tweets-detector/</link>
+      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-06-04-disaster-tweets-detector/</guid>
+      <description>This project aims to detect tweets that signals disastrous events.</description>
+    </item>
+    
+    <item>
       <title>Quuppa Tracking Device and Group Dynamics in Education</title>
       <link>/post/2021-05-27-quuppa-tracking-device-and-group-dynamics-in-education/</link>
       <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
@@ -32,15 +41,6 @@
       
       <guid>/post/2021-05-26-crunchbase-founder-analysis/</guid>
       <description>In this project, I used random forest and XGBoost to classify whether a startup is successful.</description>
-    </item>
-    
-    <item>
-      <title>Disaster Tweets Detector</title>
-      <link>/post/2021-05-26-disaster-tweets-detector-under-construction/</link>
-      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2021-05-26-disaster-tweets-detector-under-construction/</guid>
-      <description>This project aims to detect tweets that signals disastrous events.</description>
     </item>
     
     <item>
