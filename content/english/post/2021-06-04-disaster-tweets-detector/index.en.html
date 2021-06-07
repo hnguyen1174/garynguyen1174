@@ -21,16 +21,18 @@ tags:
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction:</a></li>
-<li><a href="#data">Data</a></li>
+<li><a href="#the-data">The Data</a></li>
 <li><a href="#methods">Methods:</a></li>
 <li><a href="#results">Results:</a></li>
+<li><a href="#the-model">The model:</a>
+<ul>
 <li><a href="#next-steps">Next Steps:</a></li>
 <li><a href="#artifact">Artifact</a></li>
+</ul></li>
 </ul>
 </div>
 
-<p><a href=""><img src="https://img.shields.io/badge/Colab-Run_in_Google_Colab-blue?logo=Google&amp;logoColor=FDBA18" alt="Colab" /></a>
-<a href="https://github.com/hnguyen1174/DisasterTweetsDetector"><img src="https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub" alt="GitHub" /></a></p>
+<p><a href="https://github.com/hnguyen1174/DisasterTweetsDetector"><img src="https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub" alt="GitHub" /></a></p>
 <p>Technologies:</p>
 <ul>
 <li>Python (<code>transformers</code> and <code>transformers_interpret</code>) for BERT model building</li>
@@ -42,31 +44,35 @@ tags:
 <div id="overview" class="section level4">
 <h4>Overview</h4>
 <p>This is a repository based on the <a href="https://www.kaggle.com/c/nlp-getting-started">Natural Language Processing with Disaster Tweets</a> competition on Kaggle.</p>
-<p>The goal of the competition is to indentify whether a tweet signals true disasters, including man-made or natural ones. This can potentially help disaster relief organizations and news agencies to plan and allocate resources better.</p>
+<blockquote>
+<p>Twitter has become an important communication channel in times of emergency.
+The ubiquitousness of smartphones enables people to announce an emergency they’re observing in real-time. Because of this, more agencies are interested in programatically monitoring Twitter (i.e. disaster relief organizations and news agencies). But, it’s not always clear whether a person’s words are actually announcing a disaster.</p>
+</blockquote>
+<p>The goal of the project is to identify whether a tweet <strong>really</strong> signals true disasters, including man-made or natural ones. The challenge is that Twitter users often use hyperbolic or metaphorical expressions that can contain disaster-related words. If successful, a deep learning model can potentially help disaster relief organizations and news agencies to plan and allocate resources better.</p>
 </div>
 <div id="success-metrics" class="section level4">
 <h4>Success Metrics</h4>
 <p>After observing the metrics on the leaderboard, to consider the project a success, one should achieve at least 83% accuracy on an unseen test set.</p>
 </div>
 </div>
-<div id="data" class="section level3">
-<h3>Data</h3>
-<p>The dataset includes 7,613 tweets, in which ~43% are actual disaster-related tweets (so this is a fairly balanced dataset).</p>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+<p>The dataset includes 7,613 tweets, in which ~43% are actual disaster-related (so this is a fairly balanced dataset).</p>
 <p align="center">
 <img src="target_class_dist.png" alt="drawing" width="500"/>
 </p>
 <p align="center">
 <img src="sent_len_dist.png" alt="drawing" width="500"/>
 </p>
-<p>The wordcloud is as follows:</p>
+<p>The wordcloud is as follows (we can see that “fire” and “death” are popular words in this corpus):</p>
 <p align="center">
 <img src="wordcloud.png" alt="drawing" width="500"/>
 </p>
 </div>
 <div id="methods" class="section level3">
 <h3>Methods:</h3>
-<p>Currently, I am applying <code>BERT</code> and related models (such as <code>DistilBERT</code>, <code>RoBERTa</code> and <code>XLM-BERT</code>) for this task. Comparing with traditional ML baselines (logistic regression, SVM and Random Forest), transformer models achieve ~5% improvement in accuracy in average.</p>
-<p>I also tried out <a href="https://github.com/VinAIResearch/BERTweet">Bertweet</a> from VinAI Research, and achieved an additional 0.5% accuracy.</p>
+<p>Currently, I am applying <code>BERT</code> and related models (such as <code>DistilBERT</code>, <code>RoBERTa</code> and <code>XLM-BERT</code>) for this task. Comparing with traditional ML baselines (logistic regression, SVM and Random Forest), transformer models achieve ~5% improvement in accuracy on average.</p>
+<p>I also tried out <a href="https://github.com/VinAIResearch/BERTweet">Bertweet</a> from VinAI Research, and achieved an additional 0.5% accuracy over the traditional <code>BERT</code> model.</p>
 </div>
 <div id="results" class="section level3">
 <h3>Results:</h3>
@@ -289,6 +295,7 @@ tags:
 </div>
 <div id="public-scores" class="section level4">
 <h4>Public Scores</h4>
+<p><code>BERT</code> and <code>Bertweet</code> currently have the highest scores on an unseen test set. More work is to be done.</p>
 <table>
 <thead>
 <tr class="header">
@@ -321,6 +328,27 @@ tags:
 </table>
 </div>
 </div>
+<div id="the-model" class="section level2">
+<h2>The model:</h2>
+<p>The <code>BERT</code> model can be found on <a href="https://huggingface.co/garynguyen1174/disaster_tweet_bert">Huggingface Hub</a>. It can be used to predict a single sentence as follows:</p>
+<pre><code>from transformers import AutoModelForSequenceClassification, AutoConfig, AutoTokenizer
+import pandas as pd
+import numpy as np
+import torch
+
+text = &#39;This is a disaster!&#39;
+
+model_name = &#39;garynguyen1174/disaster_tweet_bert&#39;
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+input_tensor = tokenizer.encode(text, return_tensors=&#39;pt&#39;)
+logits = model(input_tensor)[0]
+softmax = torch.nn.Softmax(dim=1)
+probs = softmax(logits)[0][1]
+probs = probs.cpu().detach().numpy()
+
+print(&#39;Probability of disaster tweet is {}%.&#39;.format(round(probs*100, 2)))</code></pre>
 <div id="next-steps" class="section level3">
 <h3>Next Steps:</h3>
 <ul class="task-list">
@@ -346,4 +374,5 @@ Streamlit</li>
 <li><a href="https://github.com/hnguyen1174/DisasterTweetsDetector">Github</a></li>
 <li><a href="https://huggingface.co/garynguyen1174/disaster_tweet_bert">Huggingface Models</a></li>
 </ul>
+</div>
 </div>
