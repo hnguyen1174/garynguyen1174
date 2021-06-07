@@ -16,7 +16,6 @@ tags:
   - NLP
 ---
 
-[![Colab](https://img.shields.io/badge/Colab-Run_in_Google_Colab-blue?logo=Google&logoColor=FDBA18)]()
 [![GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub)](https://github.com/hnguyen1174/DisasterTweetsDetector)
 
 Technologies:
@@ -31,15 +30,18 @@ Technologies:
 
 This is a repository based on the [Natural Language Processing with Disaster Tweets](https://www.kaggle.com/c/nlp-getting-started) competition on Kaggle. 
 
-The goal of the competition is to indentify whether a tweet signals true disasters, including man-made or natural ones. This can potentially help disaster relief organizations and news agencies to plan and allocate resources better.
+> Twitter has become an important communication channel in times of emergency.
+The ubiquitousness of smartphones enables people to announce an emergency they’re observing in real-time. Because of this, more agencies are interested in programatically monitoring Twitter (i.e. disaster relief organizations and news agencies). But, it’s not always clear whether a person’s words are actually announcing a disaster.
+
+The goal of the project is to identify whether a tweet **really** signals true disasters, including man-made or natural ones. The challenge is that Twitter users often use hyperbolic or metaphorical expressions that can contain disaster-related words. If successful, a deep learning model can potentially help disaster relief organizations and news agencies to plan and allocate resources better.
 
 #### Success Metrics
 
 After observing the metrics on the leaderboard, to consider the project a success, one should achieve at least 83% accuracy on an unseen test set.
 
-### Data
+### The Data
 
-The dataset includes 7,613 tweets, in which ~43% are actual disaster-related tweets (so this is a fairly balanced dataset).
+The dataset includes 7,613 tweets, in which ~43% are actual disaster-related (so this is a fairly balanced dataset).
 
 <p align="center">
   <img src="target_class_dist.png" alt="drawing" width="500"/>
@@ -49,7 +51,7 @@ The dataset includes 7,613 tweets, in which ~43% are actual disaster-related twe
   <img src="sent_len_dist.png" alt="drawing" width="500"/>
 </p>
 
-The wordcloud is as follows:
+The wordcloud is as follows (we can see that "fire" and "death" are popular words in this corpus):
 
 <p align="center">
   <img src="wordcloud.png" alt="drawing" width="500"/>
@@ -57,9 +59,9 @@ The wordcloud is as follows:
 
 ### Methods:
 
-Currently, I am applying `BERT` and related models (such as `DistilBERT`, `RoBERTa` and `XLM-BERT`) for this task. Comparing with traditional ML baselines (logistic regression, SVM and Random Forest), transformer models achieve ~5% improvement in accuracy in average. 
+Currently, I am applying `BERT` and related models (such as `DistilBERT`, `RoBERTa` and `XLM-BERT`) for this task. Comparing with traditional ML baselines (logistic regression, SVM and Random Forest), transformer models achieve ~5% improvement in accuracy on average. 
 
-I also tried out [Bertweet](https://github.com/VinAIResearch/BERTweet) from VinAI Research, and achieved an additional 0.5% accuracy.
+I also tried out [Bertweet](https://github.com/VinAIResearch/BERTweet) from VinAI Research, and achieved an additional 0.5% accuracy over the traditional `BERT` model.
 
 ### Results:
 
@@ -93,11 +95,38 @@ Model Performances as of 04/04/2021:
 
 #### Public Scores
 
+`BERT` and `Bertweet` currently have the highest scores on an unseen test set. More work is to be done.
+
 |Score|Rank|Date|Model|
 |:--:|:--:|:--:|:--:|
 |0.83266|297th|2021-04-04|Bert-Base (Uncased)|
 |0.83389|274th|2021-04-04|Bertweet (Uncased), batch size = 8, no dropout|
 |0.83481|258th|2021-04-05|Bertweet (Uncased), batch size = 12, with dropout|
+
+## The model:
+
+The `BERT` model can be found on [Huggingface Hub](https://huggingface.co/garynguyen1174/disaster_tweet_bert). It can be used to predict a single sentence as follows:
+
+```
+from transformers import AutoModelForSequenceClassification, AutoConfig, AutoTokenizer
+import pandas as pd
+import numpy as np
+import torch
+
+text = 'This is a disaster!'
+
+model_name = 'garynguyen1174/disaster_tweet_bert'
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+input_tensor = tokenizer.encode(text, return_tensors='pt')
+logits = model(input_tensor)[0]
+softmax = torch.nn.Softmax(dim=1)
+probs = softmax(logits)[0][1]
+probs = probs.cpu().detach().numpy()
+
+print('Probability of disaster tweet is {}%.'.format(round(probs*100, 2)))
+```
 
 ### Next Steps:
 

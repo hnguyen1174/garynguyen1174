@@ -1,6 +1,7 @@
 ---
 title: Movie Sentiment Prediction Deployment on AWS SageMaker
 author: Gary Nguyen
+summary: In this project, I walked through the process of deploying a deep learning model on AWS.
 date: '2021-06-02'
 slug: []
 thumbnail: "images/movie.jpeg"
@@ -25,7 +26,7 @@ DisableComments: no
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#general-process">General Process</a></li>
+<li><a href="#the-general-process">The General Process</a></li>
 <li><a href="#the-data">The Data</a></li>
 <li><a href="#the-model">The model</a></li>
 <li><a href="#deploy-the-model-in-sagemaker">Deploy the model in SageMaker:</a></li>
@@ -39,19 +40,19 @@ DisableComments: no
 <p>Technologies:</p>
 <ul>
 <li>Python (<code>torch</code>) for LSTM</li>
-<li>I trained the models with <code>AWS SageMaker</code>.</li>
+<li>I trained the models with <code>AWS SageMaker</code>. The services I used include: <code>S3</code>, <code>API Gateway</code> and <code>Lambda</code>.</li>
 </ul>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
-<p>The goal of the project is to have a simple web page which a user can use to enter a movie review. The web page will then send the review off to our deployed model on <strong>AWS SageMaker</strong> which will predict the sentiment of the entered review.</p>
+<p>The goal of the project is to have a simple web page which a user can use to enter a movie review. The web page will then send the review off to our deployed model on <strong><a href="https://aws.amazon.com/sagemaker/">AWS SageMaker</a></strong> which will predict the sentiment of the entered review.</p>
 </div>
-<div id="general-process" class="section level3">
-<h3>General Process</h3>
+<div id="the-general-process" class="section level3">
+<h3>The General Process</h3>
 <ol style="list-style-type: decimal">
-<li>Download or otherwise retrieve the data.</li>
-<li>Process / Prepare the data.</li>
-<li>Upload the processed data to S3.</li>
-<li>Train a chosen model.</li>
+<li>Retrieve the data.</li>
+<li>Process and prepare the data.</li>
+<li>Upload the processed data to <a href="https://aws.amazon.com/s3/">S3</a> - AWS Cloud Storage.</li>
+<li>Train the LSTM model.</li>
 <li>Test the trained model (typically using a batch transform job).</li>
 <li>Deploy the trained model.</li>
 <li>Use the deployed model.</li>
@@ -59,7 +60,7 @@ DisableComments: no
 </div>
 <div id="the-data" class="section level3">
 <h3>The Data</h3>
-<p>I used the <a href="http://ai.stanford.edu/~amaas/data/sentiment/">IMDb dataset</a>.</p>
+<p>I used the <a href="http://ai.stanford.edu/~amaas/data/sentiment/">IMDb dataset</a> for the deployment project.</p>
 </div>
 <div id="the-model" class="section level3">
 <h3>The model</h3>
@@ -127,10 +128,10 @@ predictor.predict(test_data)</code></pre>
 <img src="aws.png" alt="drawing" width="500"/>
 </p>
 <ul>
-<li>On the far right, we have the model in Python.</li>
+<li>On the far right, we have the LSTM model in Python.</li>
 <li>On the far left is the web app that reads a movie review, sends it off via a URL and returns a positive or negative sentiment prediction.</li>
-<li>In the middle, we have a Lambda function, which is a Python function that can be executed whenever an event occurs. I will give this function permission to send and receive data from a SageMaker endpoint.</li>
-<li>Lastly, the <strong>method</strong> I will use to execute the Lambda function is an endpoint that we will create using API Gateway. This endpoint will be a URL that listens for data.</li>
+<li>In the middle, we have a Lambda function, which is a Python function that can be executed whenever an event occurs. I will give this function permission to send and receive data from a <code>SageMaker</code> endpoint.</li>
+<li>Lastly, the <strong>method</strong> I will use to execute the Lambda function is an endpoint that we will create using <code>API Gateway</code>. This endpoint will be a URL that listens for data.</li>
 </ul>
 </div>
 <div id="simple-interface" class="section level3">
@@ -140,6 +141,6 @@ predictor.predict(test_data)</code></pre>
 <div id="artifact" class="section level3">
 <h3>Artifact</h3>
 <ul>
-<li><a href="https://github.com/hnguyen1174/DisasterTweetsDetector">Github</a>)</li>
+<li><a href="https://github.com/hnguyen1174/DisasterTweetsDetector">Github</a></li>
 </ul>
 </div>

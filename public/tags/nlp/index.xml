@@ -31,7 +31,7 @@
       <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/post/2021-06-02-movie-sentiment-prediction-deployment-on-aws-sagemaker/</guid>
-      <description>Introduction General Process The Data The model Deploy the model in SageMaker: Deploy the model using Lambda function and API Gateway Simple Interface Artifact</description>
+      <description>Introduction The General Process The Data The model Deploy the model in SageMaker: Deploy the model using Lambda function and API Gateway Simple Interface Artifact</description>
     </item>
     
   </channel>

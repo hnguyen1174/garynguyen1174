@@ -1,6 +1,7 @@
 ---
 title: Movie Sentiment Prediction Deployment on AWS SageMaker
 author: Gary Nguyen
+summary: In this project, I walked through the process of deploying a deep learning model on AWS.
 date: '2021-06-02'
 slug: []
 thumbnail: "images/movie.jpeg"
@@ -25,25 +26,25 @@ DisableComments: no
 Technologies:
 
 * Python (`torch`) for LSTM
-* I trained the models with `AWS SageMaker`.
+* I trained the models with `AWS SageMaker`. The services I used include: `S3`, `API Gateway` and `Lambda`.
 
 ### Introduction
 
-The goal of the project is to have a simple web page which a user can use to enter a movie review. The web page will then send the review off to our deployed model on **AWS SageMaker** which will predict the sentiment of the entered review.
+The goal of the project is to have a simple web page which a user can use to enter a movie review. The web page will then send the review off to our deployed model on **[AWS SageMaker](https://aws.amazon.com/sagemaker/)** which will predict the sentiment of the entered review.
 
-### General Process
+### The General Process
 
-1. Download or otherwise retrieve the data.
-2. Process / Prepare the data.
-3. Upload the processed data to S3.
-4. Train a chosen model.
+1. Retrieve the data.
+2. Process and prepare the data.
+3. Upload the processed data to [S3](https://aws.amazon.com/s3/) - AWS Cloud Storage.
+4. Train the LSTM model.
 5. Test the trained model (typically using a batch transform job).
 6. Deploy the trained model.
 7. Use the deployed model.
 
 ### The Data
 
-I used the [IMDb dataset](http://ai.stanford.edu/~amaas/data/sentiment/).
+I used the [IMDb dataset](http://ai.stanford.edu/~amaas/data/sentiment/) for the deployment project.
 
 ### The model
 
@@ -121,10 +122,10 @@ predictor.predict(test_data)
 </p>
 
 
-* On the far right, we have the  model in Python. 
+* On the far right, we have the LSTM model in Python. 
 * On the far left is the web app that reads a movie review, sends it off via a URL and returns a positive or negative sentiment prediction.
-* In the middle, we have a Lambda function, which is a Python function that can be executed whenever an event occurs. I will give this function permission to send and receive data from a SageMaker endpoint.
-* Lastly, the **method** I will use to execute the Lambda function is an endpoint that we will create using API Gateway. This endpoint will be a URL that listens for data.
+* In the middle, we have a Lambda function, which is a Python function that can be executed whenever an event occurs. I will give this function permission to send and receive data from a `SageMaker` endpoint.
+* Lastly, the **method** I will use to execute the Lambda function is an endpoint that we will create using `API Gateway`. This endpoint will be a URL that listens for data.
 
 ### Simple Interface
 
@@ -132,7 +133,7 @@ predictor.predict(test_data)
 
 ### Artifact
 
-* [Github](https://github.com/hnguyen1174/DisasterTweetsDetector))
+* [Github](https://github.com/hnguyen1174/DisasterTweetsDetector)
 
 
 

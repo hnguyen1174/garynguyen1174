@@ -23,6 +23,7 @@ DisableComments: no
 
 Technologies:
 
+* R (`ggplot2` and `tidyverse`) for data processing and visualization
 * Python (`sklearn`) for logistic regression, SVC/SVM, random forest and K-fold cross validation
 
 ### Project Objective
@@ -83,10 +84,10 @@ The feature importances provided by random forest are as follows:
 ### Insights
 
 * Even though the number of founder with business degrees is higher, I was able to deduce that the correlation between a founder succeeding if he has a computer science background is higher with good confidence. This can be due to the growing digital/software/data related startups.
-* There is a good chance of a founder succeeding if his alma mater is an Ivy-League/Top-School contrary to the popular belief of being a dropout. We hypothesize this can be true given the great alum network or maybe just the nature of the network a founder is exposed to in an Ivy league.
+* There is a good chance of a founder succeeding if his alma mater is an Ivy-League/Top-School contrary to the popular belief of being a dropout. I hypothesize this can be true given the great alum network or maybe just the nature of the network a founder is exposed to in an Ivy league.
 * Number of founded organisations is negatively correlated which can be attributed to distraction.
 * More number of founders is negatively correlated to success. This is consistent with the idea: too many views (people) result into poor decisions.
-* Startups with highest number of investments are focussed at portfolio diversification as observed in our market basket analysis.
+* Startups with highest number of investments are focused at portfolio diversification as observed in our market basket analysis.
 * Most of the largest VC firms finance late stage rounds and tech companies. So more and more tech startups are blooming and most new start-ups are in the tech category.
 
 ### Next Steps
