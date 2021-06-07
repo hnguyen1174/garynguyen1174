@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html  dir="ltr" lang="en" data-theme=""><head>
+    <title> Gary Nguyen | Movie Sentiment Prediction Deployment on AWS SageMaker </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.83.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="I&#39;m a data scientist and NLP practitioner based in NYC">
+    
+    
+    
+    
+    <link rel="stylesheet"
+        href="/css/main.min.4e2e214d42cc761f5762acb664d180d75d13cbc9feffa1f8c62a90f057de81d3.css"
+        integrity="sha256-Ti4hTULMdh9XYqy2ZNGA110Ty8n&#43;/6H4xiqQ8FfegdM="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    
+    <link rel="stylesheet"
+        href="/css/markupHighlight.min.f798cbda9aaa38f89eb38be6414bd082cfd71a6780375cbf67b6d2fb2b96491e.css"
+        integrity="sha256-95jL2pqqOPies4vmQUvQgs/XGmeAN1y/Z7bS&#43;yuWSR4="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="/post/2021-06-02-movie-sentiment-prediction-deployment-on-aws-sagemaker/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="/js/anatole-header.min.0c05c0a90d28c968a1cad4fb31abd0b8e1264e788ccefed022ae1d3b6f627514.js"
+            integrity="sha256-DAXAqQ0oyWihytT7MavQuOEmTniMzv7QIq4dO29idRQ="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+                integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Movie Sentiment Prediction Deployment on AWS SageMaker"/>
+<meta name="twitter:description" content="Introduction General Process The Data The model Deploy the model in SageMaker: Deploy the model using Lambda function and API Gateway Simple Interface Artifact"/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="/images/profile_new.jpg" alt="profile picture">
+            <h3 title=""><a href="/">Welcome, I&#39;m Gary</a></h3>
+            <div class="description">
+                <p>I'm a data scientist and NLP practitioner based in NYC</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/hnguyen1174/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/hnguyen1174" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:han2114@columbia.edu" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Gary Nguyen  2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About Me</a></li>
+        
+            
+            <li><a 
+                   href="/nlp_news/"
+                        
+                   title="">NLP News</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <img class="post-thumbnail" src="/images/movie.jpeg" alt="Thumbnail image">
+            
+            <div class="post-title">
+                <h3>Movie Sentiment Prediction Deployment on AWS SageMaker</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> 
+                                                2021-06-02
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">2-minute read</span>
+                    </div>
+                
+            </div>
+
+            
+<script src="/post/2021-06-02-movie-sentiment-prediction-deployment-on-aws-sagemaker/index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#general-process">General Process</a></li>
+<li><a href="#the-data">The Data</a></li>
+<li><a href="#the-model">The model</a></li>
+<li><a href="#deploy-the-model-in-sagemaker">Deploy the model in SageMaker:</a></li>
+<li><a href="#deploy-the-model-using-lambda-function-and-api-gateway">Deploy the model using <code>Lambda function</code> and <code>API Gateway</code></a></li>
+<li><a href="#simple-interface">Simple Interface</a></li>
+<li><a href="#artifact">Artifact</a></li>
+</ul>
+</div>
+
+<p><a href="https://github.com/hnguyen1174/sagemaker-movie-reviews"><img src="https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub" alt="GitHub" /></a></p>
+<p>Technologies:</p>
+<ul>
+<li>Python (<code>torch</code>) for LSTM</li>
+<li>I trained the models with <code>AWS SageMaker</code>.</li>
+</ul>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<p>The goal of the project is to have a simple web page which a user can use to enter a movie review. The web page will then send the review off to our deployed model on <strong>AWS SageMaker</strong> which will predict the sentiment of the entered review.</p>
+</div>
+<div id="general-process" class="section level3">
+<h3>General Process</h3>
+<ol style="list-style-type: decimal">
+<li>Download or otherwise retrieve the data.</li>
+<li>Process / Prepare the data.</li>
+<li>Upload the processed data to S3.</li>
+<li>Train a chosen model.</li>
+<li>Test the trained model (typically using a batch transform job).</li>
+<li>Deploy the trained model.</li>
+<li>Use the deployed model.</li>
+</ol>
+</div>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+<p>I used the <a href="http://ai.stanford.edu/~amaas/data/sentiment/">IMDb dataset</a>.</p>
+</div>
+<div id="the-model" class="section level3">
+<h3>The model</h3>
+<p>I will use a simple LSTM model:</p>
+<pre><code>class LSTMClassifier(nn.Module):
+
+    def __init__(self, embedding_dim, hidden_dim, vocab_size):
+        &quot;&quot;&quot;
+        Initialize the model by settingg up the various layers.
+        &quot;&quot;&quot;
+        super(LSTMClassifier, self).__init__()
+
+        self.embedding = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
+        self.lstm = nn.LSTM(embedding_dim, hidden_dim)
+        self.dense = nn.Linear(in_features=hidden_dim, out_features=1)
+        self.sig = nn.Sigmoid()
+        
+        self.word_dict = None
+
+    def forward(self, x):
+        &quot;&quot;&quot;
+        Perform a forward pass of our model on some input.
+        &quot;&quot;&quot;
+        x = x.t()
+        lengths = x[0,:]
+        reviews = x[1:,:]
+        embeds = self.embedding(reviews)
+        lstm_out, _ = self.lstm(embeds)
+        out = self.dense(lstm_out)
+        out = out[lengths - 1, range(len(lengths))]
+        return self.sig(out.squeeze())</code></pre>
+</div>
+<div id="deploy-the-model-in-sagemaker" class="section level3">
+<h3>Deploy the model in SageMaker:</h3>
+<pre><code>from sagemaker.pytorch import PyTorch
+
+estimator = PyTorch(entry_point=&quot;train.py&quot;,
+                    source_dir=&quot;train&quot;,
+                    role=role,
+                    framework_version=&#39;0.4.0&#39;,
+                    train_instance_count=1,
+                    train_instance_type=&#39;ml.p2.xlarge&#39;, #&#39;ml.p2.xlarge&#39;,
+                    hyperparameters={
+                        &#39;epochs&#39;: 10,
+                        &#39;hidden_dim&#39;: 200,
+                    })
+                    
+estimator.fit({&#39;training&#39;: input_data})
+
+predictor = estimator.deploy(initial_instance_count=1, instance_type=&#39;ml.p2.xlarge&#39;)</code></pre>
+<p>and then use the <code>predictor</code> to predict on processed text reviews:</p>
+<pre><code>test_review = &#39;This movie is fantastic!&#39;
+
+test_review_processed = review_to_words(test_review)
+processed_test_review, lengh_test_review = convert_and_pad(word_dict, test_review_processed)
+test_data = np.expand_dims(
+    np.hstack((lengh_test_review, processed_test_review)), 
+    axis=0)
+    
+predictor.predict(test_data)</code></pre>
+</div>
+<div id="deploy-the-model-using-lambda-function-and-api-gateway" class="section level3">
+<h3>Deploy the model using <code>Lambda function</code> and <code>API Gateway</code></h3>
+<p><img src="aws.png" /></p>
+<ul>
+<li>On the far right, we have the model in Python.</li>
+<li>On the far left is the web app that reads a movie review, sends it off via a URL and returns a positive or negative sentiment prediction.</li>
+<li>In the middle, we have a Lambda function, which is a Python function that can be executed whenever an event occurs. I will give this function permission to send and receive data from a SageMaker endpoint.</li>
+<li>Lastly, the <strong>method</strong> I will use to execute the Lambda function is an endpoint that we will create using API Gateway. This endpoint will be a URL that listens for data.</li>
+</ul>
+</div>
+<div id="simple-interface" class="section level3">
+<h3>Simple Interface</h3>
+<p><img src="app.png" /></p>
+</div>
+<div id="artifact" class="section level3">
+<h3>Artifact</h3>
+<ul>
+<li><a href="https://github.com/hnguyen1174/DisasterTweetsDetector">Github</a>)</li>
+</ul>
+</div>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="/js/medium-zoom.min.83cb1dd5fea8d42d87d1e601a07faa73089ad0ef9ccfe5daf6041289ebcc4e46.js"
+        integrity="sha256-g8sd1f6o1C2H0eYBoH&#43;qcwia0O&#43;cz&#43;Xa9gQSievMTkY="
+        crossorigin="anonymous"></script></body>
+
+</html>
