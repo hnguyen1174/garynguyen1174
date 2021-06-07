@@ -5,6 +5,9 @@
     <loc>/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2021-06-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/classification/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
   </url><url>
@@ -17,25 +20,25 @@
     <loc>/post/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/categories/project/</loc>
+    <lastmod>2021-06-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/r/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2021-06-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/post/2021-06-04-disaster-tweets-detector/</loc>
-    <lastmod>2021-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/project/</loc>
     <lastmod>2021-06-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/tweets/</loc>
     <lastmod>2021-06-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/aws/</loc>
+    <lastmod>2021-06-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/demo/</loc>
     <lastmod>2021-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/2021-06-02-movie-sentiment-prediction-deployment-on-aws-sagemaker/</loc>
@@ -45,6 +48,9 @@
     <lastmod>2021-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/knn/</loc>
+    <lastmod>2021-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/mini-project/</loc>
     <lastmod>2021-05-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/2021-05-27-quuppa-tracking-device-and-group-dynamics-in-education/</loc>

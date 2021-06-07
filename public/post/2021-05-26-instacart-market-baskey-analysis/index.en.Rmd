@@ -16,7 +16,6 @@ tags:
   - customer analysis
   - prediction
 Description: ''
-Categories: []
 DisableComments: no
 ---
 
