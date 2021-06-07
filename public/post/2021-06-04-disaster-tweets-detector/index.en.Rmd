@@ -112,3 +112,4 @@ Model Performances as of 04/04/2021:
 ### Artifact
 
 * [Github](https://github.com/hnguyen1174/DisasterTweetsDetector)
+* [Huggingface Models](https://huggingface.co/garynguyen1174/disaster_tweet_bert)
