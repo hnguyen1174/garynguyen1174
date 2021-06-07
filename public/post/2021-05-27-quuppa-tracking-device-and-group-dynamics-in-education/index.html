@@ -57,7 +57,7 @@
 <meta name="twitter:image" content="/images/site-feature-image.png"/>
 
 <meta name="twitter:title" content="Quuppa Tracking Device and Group Dynamics in Education"/>
-<meta name="twitter:description" content="I applied three clustering algorithms, namely k-means clustering, Gaussian Mixture Model (GMM) with expectation maximization, and mean-shift algorithm to analyze the Quuppa tracking location data in order to understand group membership and dynamics in an educational setting."/>
+<meta name="twitter:description" content="I applied three clustering algorithms to analyze the Quuppa tracking location data in order to understand group membership and dynamics in an educational setting."/>
 
 
     
@@ -208,24 +208,30 @@
 </div>
 <div id="methods" class="section level3">
 <h3>Methods</h3>
-<p>For this project, I used three main methods to analyze group dynamics: k-mean clustering, GMM with expectation
-maximization and mean-shift algorithm.</p>
+<p>For this project, I used three main methods to analyze group dynamics: <strong>k-mean clustering</strong>, <strong>GMM with expectation maximization</strong> and <strong>mean-shift algorithm</strong>.</p>
 </div>
 <div id="results" class="section level3">
 <h3>Results</h3>
-<p>K-means and GMM Comparison with increasing number of predefined clusters:</p>
-<p><img src="quuppa_result_1.png" />
-<img src="quuppa_result_2.png" /></p>
-<p>Mean-shift Clustering Algorithm</p>
-<p><img src="quuppa_result_3.png" /></p>
+<p><strong>K-means and GMM Comparison with increasing number of predefined clusters:</strong></p>
+<p align="center">
+<img src="quuppa_result_1.png" alt="drawing" width="700"/>
+</p>
+<p align="center">
+<img src="quuppa_result_2.png" alt="drawing" width="700"/>
+</p>
+<p><strong>Mean-shift Clustering Algorithm</strong></p>
+<p align="center">
+<img src="quuppa_result_3.png" alt="drawing" width="700"/>
+</p>
 </div>
 <div id="discussion-and-impact" class="section level3">
 <h3>Discussion and Impact</h3>
-<p>After taking all factors into considerations, mean-shift and GMM are best candidate models for analyze tracking data by Quuppa. There is a trade-off: while GMM can work with mixed memberships and has a probability component, it needs the number of cluster as human input, which is more prone to errors. Mean-shift algorithm can detect clusters without a priori knowledge, given a bandwidth specified by industry knowledge. However, mean-shift has a tendency of taking noises into its clustering. In both case, the chosen clustering algorithm will give sufficiently good insights into the group membership of each participants in a discrete snapshot in time. Educators can use this information to foster collaborations in their events, or to design the layout of the venue to achieve desired group outcomes. Another application is to design activities to break up pre-formed groups and facilitate cross-group collaborations to benefits everyone involved. Facilitators can be assigned, for example, to improve group dynamics and lend support to participants that need to join a group.</p>
+<p>After taking all factors into considerations, <strong>mean-shift</strong> and <strong>GMM</strong> are best candidate models for analyze tracking data by Quuppa. There is a trade-off: while GMM can work with mixed memberships and has a probability component, it needs the number of cluster as human input, which is more prone to errors. Mean-shift algorithm can detect clusters without a priori knowledge, given a bandwidth specified by industry knowledge. However, mean-shift has a tendency of taking noises into its clustering. In both case, the chosen clustering algorithm will give sufficiently good insights into the group membership of each participants in a discrete snapshot in time.</p>
+<p>Educators can use this information to foster collaborations in their events, or to design the layout of the venue to achieve desired group outcomes. Another application is to design activities to break up pre-formed groups and facilitate cross-group collaborations to benefits everyone involved. Facilitators can be assigned, for example, to improve group dynamics and lend support to participants that need to join a group.</p>
 </div>
 <div id="future-work" class="section level3">
 <h3>Future Work</h3>
-<p>The method described in this research assumes that the different snapshots are independent of each other (i.e. each snapshot is discrete), and therefore group membership in one snapshot doesn’t affect the others. This is not true in practical situations where group membership may change depend on preceding group events. Therefore, a natural next step is to apply Dynamic Mixture Models (DMM) to analyze the change in group dynamics through time. DMM can be applied to time series and can explain similarities between movements of participant pairs, which cannot be explained by a single snapshot clustering.</p>
+<p>The method described in this small project assumes that the different snapshots are independent of each other (i.e. each snapshot is discrete), and therefore group membership in one snapshot doesn’t affect the others. This is not true in practical situations where group membership may change depend on preceding group events. Therefore, a natural next step is to apply Dynamic Mixture Models (DMM) to analyze the change in group dynamics through time. DMM can be applied to time series and can explain similarities between movements of participant pairs, which cannot be explained by a single snapshot clustering.</p>
 </div>
 <div id="artifact" class="section level3">
 <h3>Artifact</h3>

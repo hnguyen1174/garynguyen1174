@@ -1,6 +1,7 @@
 ---
 title: Movie Sentiment Prediction Deployment on AWS SageMaker
 author: Gary Nguyen
+summary: In this project, I walked through the process of deploying a deep learning model on AWS.
 date: '2021-06-02'
 slug: []
 thumbnail: "images/movie.jpeg"

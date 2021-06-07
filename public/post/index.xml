@@ -22,7 +22,7 @@
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/post/2021-06-04-disaster-tweets-detector/</guid>
-      <description>This project aims to detect tweets that signals disastrous events.</description>
+      <description>This project aims to detect tweets that signal disastrous events.</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/post/2021-06-02-movie-sentiment-prediction-deployment-on-aws-sagemaker/</guid>
-      <description>Introduction The General Process The Data The model Deploy the model in SageMaker: Deploy the model using Lambda function and API Gateway Simple Interface Artifact</description>
+      <description>In this project, I walked through the process of deploying a deep learning model on AWS.</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
       
       <guid>/post/2021-05-27-quuppa-tracking-device-and-group-dynamics-in-education/</guid>
-      <description>I applied three clustering algorithms, namely k-means clustering, Gaussian Mixture Model (GMM) with expectation maximization, and mean-shift algorithm to analyze the Quuppa tracking location data in order to understand group membership and dynamics in an educational setting.</description>
+      <description>I applied three clustering algorithms to analyze the Quuppa tracking location data in order to understand group membership and dynamics in an educational setting.</description>
     </item>
     
     <item>
