@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html  dir="ltr" lang="en" data-theme=""><head>
+    <title> Gary Nguyen | EHR Symptom Detection </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.83.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="I&#39;m a data scientist and NLP practitioner based in NYC">
+    
+    
+    
+    
+    <link rel="stylesheet"
+        href="/css/main.min.4e2e214d42cc761f5762acb664d180d75d13cbc9feffa1f8c62a90f057de81d3.css"
+        integrity="sha256-Ti4hTULMdh9XYqy2ZNGA110Ty8n&#43;/6H4xiqQ8FfegdM="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    
+    <link rel="stylesheet"
+        href="/css/markupHighlight.min.f798cbda9aaa38f89eb38be6414bd082cfd71a6780375cbf67b6d2fb2b96491e.css"
+        integrity="sha256-95jL2pqqOPies4vmQUvQgs/XGmeAN1y/Z7bS&#43;yuWSR4="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="/post/2021-06-06-ehr-symptom-detection/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="/js/anatole-header.min.0c05c0a90d28c968a1cad4fb31abd0b8e1264e788ccefed022ae1d3b6f627514.js"
+            integrity="sha256-DAXAqQ0oyWihytT7MavQuOEmTniMzv7QIq4dO29idRQ="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+                integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="EHR Symptom Detection"/>
+<meta name="twitter:description" content="In this project, I use deep learning to classify symptoms in nursing notes (EHR)"/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="/images/profile_new.jpg" alt="profile picture">
+            <h3 title=""><a href="/">Welcome, I&#39;m Gary</a></h3>
+            <div class="description">
+                <p>I'm a data scientist and NLP practitioner based in NYC</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://www.linkedin.com/in/hnguyen1174/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/hnguyen1174" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:han2114@columbia.edu" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Gary Nguyen  2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About Me</a></li>
+        
+            
+            <li><a 
+                   href="/nlp_news/"
+                        
+                   title="">NLP News</a></li>
+        
+            
+            <li><a 
+                   href="/contact/"
+                        
+                   title="">Contact</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <img class="post-thumbnail" src="/images/nyc_healthcare.jpeg" alt="Thumbnail image">
+            
+            <div class="post-title">
+                <h3>EHR Symptom Detection</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> 
+                                                2021-06-06
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">5-minute read</span>
+                    </div>
+                
+            </div>
+
+            
+<script src="/post/2021-06-06-ehr-symptom-detection/index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#dataset">Dataset</a></li>
+<li><a href="#method">Method</a></li>
+<li><a href="#results">Results:</a></li>
+<li><a href="#future-extensions">Future Extensions</a></li>
+<li><a href="#artifact">Artifact</a></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<div id="overview" class="section level4">
+<h4>Overview</h4>
+<p>In this project, I investigated whether using deep learning models on a medical records corpus of notes will result in better predictive performance compared to traditional machine learning methods. I will use a collection of deidentified patient’s discharge notes that have been annotated for 13 symptoms: dyspnea (shortness of breath), chest pain, nausea, fatigue, cough, dizziness, weight change, palpitation, confusion, peripheral edema and anorexia.</p>
+<p>I compared the performance of two traditional machine learning models (logistic regression and random forest) with multiple NLP deep learning models. I found BERT with two additional layers of CNN and LSTM add significant benefits over the baseline models.</p>
+<p>Using a deep learning model to detect symptoms from medical notes can save time and resources during outpatient visits. Using this model, a clinician or nurse can quickly pinpoint which symptoms the patient has or had in the past, and allocate resources more efficiently.</p>
+</div>
+<div id="challenges" class="section level4">
+<h4>Challenges</h4>
+<p>There are many challenges that are associated with natural language processing in healthcare. Previous studies have shown that the inability to effectively model the subtleties of the medical sublanguage hinder performance. In addition, traditional NLP methods can work with synonyms but not similar terms, so many of them suffer from the curse of dimensionality. In the face of such challenges, advanced methods in natural language processing such as CNN, LSTM and BERT are also gaining popularity.</p>
+</div>
+</div>
+<div id="dataset" class="section level3">
+<h3>Dataset</h3>
+<p>Our study is conducted on a dataset of discharge notes for patients with heart diseases. The training dataset has 8,031 notes, and the test dataset has 293 notes. The test set is a gold-standard, human-labelled dataset while the training set is generated by <a href="https://github.com/hnguyen1174/NimbleMiner">NimberMiner</a>. There are eleven symptoms in our datasets. They all have class imbalances: the negative class outnumbers the positive class across symptoms. This adds another layer of difficulty to our task. Some deep learning models that we use, such as BERT, address the issue of class imbalance better than others do. The class imbalance is presented as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Symptom</th>
+<th align="center">Training Set</th>
+<th align="center">Test Set</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Dyspnea</td>
+<td align="center">39%</td>
+<td align="center">49%</td>
+</tr>
+<tr class="even">
+<td align="center">Chest Pain</td>
+<td align="center">30%</td>
+<td align="center">30%</td>
+</tr>
+<tr class="odd">
+<td align="center">Nausea</td>
+<td align="center">21%</td>
+<td align="center">21%</td>
+</tr>
+<tr class="even">
+<td align="center">Fatigue</td>
+<td align="center">18%</td>
+<td align="center">23%</td>
+</tr>
+<tr class="odd">
+<td align="center">Cough</td>
+<td align="center">16%</td>
+<td align="center">21%</td>
+</tr>
+<tr class="even">
+<td align="center">Dizziness</td>
+<td align="center">14%</td>
+<td align="center">15%</td>
+</tr>
+<tr class="odd">
+<td align="center">Weight Change</td>
+<td align="center">10%</td>
+<td align="center">9%</td>
+</tr>
+<tr class="even">
+<td align="center">Palpitation</td>
+<td align="center">8%</td>
+<td align="center">5%</td>
+</tr>
+<tr class="odd">
+<td align="center">Confusion</td>
+<td align="center">8%</td>
+<td align="center">11%</td>
+</tr>
+<tr class="even">
+<td align="center">Peripheral Edema</td>
+<td align="center">7%</td>
+<td align="center">11%</td>
+</tr>
+<tr class="odd">
+<td align="center">Anorexia</td>
+<td align="center">5%</td>
+<td align="center">8%</td>
+</tr>
+</tbody>
+</table>
+<p>Our notes are in the form of free-text. They do not have strict structure and vary in length based on the symptoms of each patient and their severity. The training set and the test set are relatively similar in terms of length: the maximum length is 4,547 words for the training set and 4,273 words for the test set, and the average length is 1,025 for the training set and 1,336 for the test set.</p>
+</div>
+<div id="method" class="section level3">
+<h3>Method</h3>
+<div id="baseline-models" class="section level4">
+<h4>Baseline Models</h4>
+<p>For this study, I choose logistic regression and random forest as our two baseline models. Logistic regression and random forests have been used widely as predictive models of choice for text classification. For logistic regression, we cast the notes into a sparse matrices before training the model. For random forest, I also cast the notes in sparse matrices, and then used the “ranger” implementation of random forest in the R language, using twenty decision trees and “impurity” as our importance metrics. Among these two baseline models, random forest has been widely used in natural language processing tasks because it is highly interpretable.</p>
+</div>
+<div id="deep-learning-model-training" class="section level4">
+<h4>Deep Learning Model Training</h4>
+<p>Traditional natural language processing methods, such as the baseline models, are limited by their vocabulary dictionary for predictive tasks and require complex processing steps. In addition, simplistic models such as logistic regression cannot effectively recognize the semantic relationships between words and n-grams. We choose to perform text classification using word embeddings and convoluted neural networks (CNN) because such models don’t have these restrictions.
+We experiment with four different architectures: (1) a 1-layer embedding and 4-layer CNN; (2) a 1-layer fastText embedding and 4-layer CNN and (3) 1-layer embedding, 4-layer CNN followed by a 1-layer Bidirectional Long-short Term Memory (LSTM) and (4) a BERT layer, 2-layer CNN and 1-layer LSTM. We train binary classifications using these three architectures for all eleven symptoms. These models are trained using the Keras library in R with a Tensorflow backend.</p>
+</div>
+</div>
+<div id="results" class="section level3">
+<h3>Results:</h3>
+<p>We found that deep learning models, on average, produce better performance when compared to traditional machine learning methods. A full comparison can be found in the table below.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Symptom</th>
+<th align="center">Logistic Regression</th>
+<th align="center">Random Forest</th>
+<th align="center">4-layer CNN</th>
+<th align="center">fastText embeddings + 4-layer CNN</th>
+<th align="center">4-layer CNN + Bidirectional LSTM</th>
+<th align="center">BERT, 2-layer CNN and LSTM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Dyspnea</td>
+<td align="center">0.19</td>
+<td align="center">0.9</td>
+<td align="center">0.91</td>
+<td align="center">0.89</td>
+<td align="center">0.91</td>
+<td align="center">0.93</td>
+</tr>
+<tr class="even">
+<td align="center">Chest Pain</td>
+<td align="center">0.24</td>
+<td align="center">0.79</td>
+<td align="center">0.86</td>
+<td align="center">0.85</td>
+<td align="center">0.86</td>
+<td align="center">0.88</td>
+</tr>
+<tr class="odd">
+<td align="center">Nausea</td>
+<td align="center">0.19</td>
+<td align="center">0.42</td>
+<td align="center">0.89</td>
+<td align="center">0.83</td>
+<td align="center">0.86</td>
+<td align="center">0.84</td>
+</tr>
+<tr class="even">
+<td align="center">Fatigue</td>
+<td align="center">0.08</td>
+<td align="center">0.86</td>
+<td align="center">0.85</td>
+<td align="center">0.5</td>
+<td align="center">0.83</td>
+<td align="center">0.88</td>
+</tr>
+<tr class="odd">
+<td align="center">Cough</td>
+<td align="center">0.32</td>
+<td align="center">0.79</td>
+<td align="center">0.81</td>
+<td align="center">0.77</td>
+<td align="center">0.82</td>
+<td align="center">0.84</td>
+</tr>
+<tr class="even">
+<td align="center">Dizziness</td>
+<td align="center">0.14</td>
+<td align="center">0.8</td>
+<td align="center">0.85</td>
+<td align="center">0.47</td>
+<td align="center">0.77</td>
+<td align="center">0.9</td>
+</tr>
+<tr class="odd">
+<td align="center">Weight Change</td>
+<td align="center">0.14</td>
+<td align="center">0.65</td>
+<td align="center">0.7</td>
+<td align="center">0.63</td>
+<td align="center">0.69</td>
+<td align="center">0.85</td>
+</tr>
+<tr class="even">
+<td align="center">Palpitation</td>
+<td align="center">0.00</td>
+<td align="center">0.56</td>
+<td align="center">0.75</td>
+<td align="center">0.58</td>
+<td align="center">0.62</td>
+<td align="center">0.72</td>
+</tr>
+<tr class="odd">
+<td align="center">Confusion</td>
+<td align="center">0.21</td>
+<td align="center">0.9</td>
+<td align="center">0.88</td>
+<td align="center">0.3</td>
+<td align="center">0.88</td>
+<td align="center">0.88</td>
+</tr>
+<tr class="even">
+<td align="center">Peripheral Edema</td>
+<td align="center">0.17</td>
+<td align="center">0.69</td>
+<td align="center">0.64</td>
+<td align="center">0.33</td>
+<td align="center">0.59</td>
+<td align="center">0.8</td>
+</tr>
+<tr class="odd">
+<td align="center">Anorexia</td>
+<td align="center">0.00</td>
+<td align="center">0.65</td>
+<td align="center">0.77</td>
+<td align="center">0.34</td>
+<td align="center">0.57</td>
+<td align="center">0.8</td>
+</tr>
+</tbody>
+</table>
+<p>Since deep learning models outperform the baseline models, below we present the accuracy and F-score of all eleven symptoms using three different deep learning architectures.</p>
+<div id="accuracy" class="section level4">
+<h4>Accuracy</h4>
+<p><img src="ehr_chart.png" />
+#### F1-Score</p>
+<p><img src="ehr_chart_f1.png" /></p>
+</div>
+</div>
+<div id="future-extensions" class="section level3">
+<h3>Future Extensions</h3>
+<p>As EHR is becoming ubiquitous and machine learning algorithms for natural language processing are developing very quickly, there are ample opportunities for improvements. There are more features available in our dataset, such as patients’ ages, time and dates of the discharge notes and so on. We can potentially use these features to impose a temporal structure on our data set to not only predict a symptom, but also predict when it will occur in the future.</p>
+</div>
+<div id="artifact" class="section level3">
+<h3>Artifact</h3>
+<ul>
+<li><a href="https://github.com/hnguyen1174/ehr-symptom-detection">Github</a></li>
+<li><a href="https://github.com/hnguyen1174/ehr-symptom-detection/blob/master/reports/Paper%20Draft_V3.pdf">Project report (draft)</a></li>
+</ul>
+</div>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="/js/medium-zoom.min.83cb1dd5fea8d42d87d1e601a07faa73089ad0ef9ccfe5daf6041289ebcc4e46.js"
+        integrity="sha256-g8sd1f6o1C2H0eYBoH&#43;qcwia0O&#43;cz&#43;Xa9gQSievMTkY="
+        crossorigin="anonymous"></script></body>
+
+</html>
