@@ -77,7 +77,9 @@ I chose **random forest** and **XGBoost**. Random forest has decent performance 
 
 The feature importances provided by random forest are as follows:
 
-<img src="crunchbase_feature_imp.png" alt="drawing" width="500"/>
+<p align="center">
+  <img src="crunchbase_feature_imp.png" alt="drawing" width="500"/>
+</p>
 
 ### Insights
 

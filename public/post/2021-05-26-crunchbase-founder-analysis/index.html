@@ -199,25 +199,72 @@
 <ol style="list-style-type: decimal">
 <li>The total investments from Series B and above take less than 40% of the total investments in the dataset.</li>
 </ol>
-<p><img src="crunchbase_funding_rounds.png" /></p>
+<p align="center">
+<img src="crunchbase_funding_rounds.png" alt="drawing" width="500"/>
+</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Most startup investments come from the US, specifically the states of California and New York.</li>
 </ol>
-<p><img src="crunchbase_country.png" /></p>
-<p><img src="crunchbase_state.png" /></p>
+<p align="center">
+<img src="crunchbase_country.png" alt="drawing" width="500"/>
+</p>
+<p align="center">
+<img src="crunchbase_state.png" alt="drawing" width="500"/>
+</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Unsurprisingly, the top 5 categories that receive the most startup investments are: (1) software, (2) mobile, (3) e-commerce, (4) enterprise software and (5) SaaS.</li>
 </ol>
-<p><img src="crunchbase_type.png" /></p>
+<p align="center">
+<img src="crunchbase_type.png" alt="drawing" width="500"/>
+</p>
 </div>
 <div id="methods-and-findings" class="section level3">
 <h3>Methods and Findings</h3>
 <p>The K-fold cross validation result is as follows:</p>
-<p><img src="crunchbase_kfold_result.png" /></p>
-<p><img src="crunchbase_kfold_plot.png" /></p>
-<p>I chose random forest and XGBoost. Random forest has decent performance metrics, and provides feature importance. XGBoost, on the other hand, has both highest accuracy (92.42%) and F1-Score (87.26%).</p>
-<p>The feature importance provided by random forest is as follows:</p>
-<p><img src="crunchbase_feature_imp.png" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Model Name</th>
+<th align="center">Accuracy</th>
+<th align="center">Recall</th>
+<th align="center">F-1 Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Logistic Regression</td>
+<td align="center">0.83</td>
+<td align="center">0.60</td>
+<td align="center">0.68</td>
+</tr>
+<tr class="even">
+<td align="center">XGBoost</td>
+<td align="center">0.08</td>
+<td align="center">0.92</td>
+<td align="center">0.88</td>
+</tr>
+<tr class="odd">
+<td align="center">Random Forest</td>
+<td align="center">0.91</td>
+<td align="center">0.82</td>
+<td align="center">0.85</td>
+</tr>
+<tr class="even">
+<td align="center">Support Vector Classifier</td>
+<td align="center">0.83</td>
+<td align="center">0.62</td>
+<td align="center">0.69</td>
+</tr>
+</tbody>
+</table>
+<p align="center">
+<img src="crunchbase_kfold_plot.png" alt="drawing" width="500"/>
+</p>
+<p>I chose <strong>random forest</strong> and <strong>XGBoost</strong>. Random forest has decent performance metrics, and provides feature importance. XGBoost, on the other hand, has both highest accuracy (92.42%) and F1-Score (87.26%).</p>
+<p>The feature importances provided by random forest are as follows:</p>
+<p align="center">
+<img src="crunchbase_feature_imp.png" alt="drawing" width="500"/>
+</p>
 </div>
 <div id="insights" class="section level3">
 <h3>Insights</h3>
@@ -232,10 +279,13 @@
 </div>
 <div id="next-steps" class="section level3">
 <h3>Next Steps</h3>
-<ul>
-<li>Apply the selected model on new startup (from 2020 and 2021) and perform qualitative analyses to see if the findings are still relevant</li>
-<li>See how COVID-19 affects startup valuation and adjust models to avoid drift.</li>
-<li>Refactor the repo and provide unit tests</li>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Apply the selected model on new startup (from 2020 and 2021) and perform qualitative analyses to see if the findings are still relevant</li>
+<li><input type="checkbox" disabled="" />
+See how COVID-19 affects startup valuation and adjust models to avoid drift.</li>
+<li><input type="checkbox" disabled="" />
+Refactor the repo and provide unit tests</li>
 </ul>
 </div>
 <div id="artifact" class="section level3">
