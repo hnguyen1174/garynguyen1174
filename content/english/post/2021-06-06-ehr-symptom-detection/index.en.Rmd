@@ -16,7 +16,6 @@ tags:
   - R
   - classification
 Description: ''
-Tags: []
 Categories: []
 DisableComments: no
 ---
@@ -97,10 +96,15 @@ Since deep learning models outperform the baseline models, below we present the 
 
 #### Accuracy
 
-![](ehr_chart.png)
+<p align="center">
+  <img src="ehr_chart.png" alt="drawing" width="600"/>
+</p>
+
 #### F1-Score
 
-![](ehr_chart_f1.png)
+<p align="center">
+  <img src="ehr_chart_f1.png" alt="drawing" width="600"/>
+</p>
 
 ### Future Extensions
 

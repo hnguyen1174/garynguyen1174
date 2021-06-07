@@ -5,10 +5,22 @@
     <loc>/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/classification/</loc>
+    <lastmod>2021-06-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/post/2021-06-06-ehr-symptom-detection/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/nlp/</loc>
+    <lastmod>2021-06-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/post/</loc>
+    <lastmod>2021-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/r/</loc>
+    <lastmod>2021-06-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
@@ -17,20 +29,23 @@
     <loc>/post/2021-06-04-disaster-tweets-detector/</loc>
     <lastmod>2021-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/nlp/</loc>
-    <lastmod>2021-06-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/categories/project/</loc>
-    <lastmod>2021-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2021-06-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/tweets/</loc>
     <lastmod>2021-06-04T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/aws/</loc>
+    <lastmod>2021-06-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/post/2021-06-02-movie-sentiment-prediction-deployment-on-aws-sagemaker/</loc>
     <lastmod>2021-06-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/sagemaker/</loc>
+    <lastmod>2021-06-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/knn/</loc>
+    <lastmod>2021-05-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/2021-05-27-quuppa-tracking-device-and-group-dynamics-in-education/</loc>
     <lastmod>2021-05-27T00:00:00+00:00</lastmod>
@@ -38,7 +53,19 @@
     <loc>/post/2021-05-26-crunchbase-founder-analysis/</loc>
     <lastmod>2021-05-26T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/customer-analysis/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/post/2021-05-26-instacart-market-baskey-analysis/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/prediction/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/python/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/startup/</loc>
     <lastmod>2021-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/about/</loc>

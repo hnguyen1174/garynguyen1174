@@ -16,7 +16,6 @@ tags:
   - SageMaker
   - classification
 Description: ''
-Tags: []
 Categories: []
 DisableComments: no
 ---
@@ -117,7 +116,10 @@ predictor.predict(test_data)
 
 ### Deploy the model using `Lambda function` and `API Gateway`
 
-![](aws.png)
+<p align="center">
+  <img src="aws.png" alt="drawing" width="500"/>
+</p>
+
 
 * On the far right, we have the  model in Python. 
 * On the far left is the web app that reads a movie review, sends it off via a URL and returns a positive or negative sentiment prediction.

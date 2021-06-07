@@ -41,13 +41,19 @@ After observing the metrics on the leaderboard, to consider the project a succes
 
 The dataset includes 7,613 tweets, in which ~43% are actual disaster-related tweets (so this is a fairly balanced dataset).
 
-<img src="target_class_dist.png" alt="drawing" width="500"/>
+<p align="center">
+  <img src="target_class_dist.png" alt="drawing" width="500"/>
+</p>
 
-<img src="sent_len_dist.png" alt="drawing" width="500"/>
+<p align="center">
+  <img src="sent_len_dist.png" alt="drawing" width="500"/>
+</p>
 
 The wordcloud is as follows:
 
-<img src="wordcloud.png" alt="drawing" width="500"/>
+<p align="center">
+  <img src="wordcloud.png" alt="drawing" width="500"/>
+</p>
 
 ### Methods:
 

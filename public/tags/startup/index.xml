@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>startup on Welcome, I&#39;m Gary</title>
+    <link>/tags/startup/</link>
+    <description>Recent content in startup on Welcome, I&#39;m Gary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/startup/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crunchbase Founder Analysis</title>
+      <link>/post/2021-05-26-crunchbase-founder-analysis/</link>
+      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-05-26-crunchbase-founder-analysis/</guid>
+      <description>In this project, I used random forest and XGBoost to classify whether a startup is successful.</description>
+    </item>
+    
+  </channel>
+</rss>

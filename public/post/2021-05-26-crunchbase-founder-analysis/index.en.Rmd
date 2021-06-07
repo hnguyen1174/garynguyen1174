@@ -15,7 +15,6 @@ tags:
   - startup
   - python
 Description: ''
-Tags: []
 Categories: []
 DisableComments: no
 ---
