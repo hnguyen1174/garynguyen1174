@@ -33,6 +33,8 @@ Technologies:
 
 Cookie Cats is a popular mobile puzzle game developed by [Tactile Games](https://tactilegames.com/). This is a classic game where you need to connect three pieces of puzzle of the same type to clear a board and score points.
 
+![](game.png)
+
 As players move to higher level, they will see gates that ask them to either wait for a period of time, or make an in-app purchase to progress. In this project, I am interested in performing an A/B test to understand the effect of moving the first gate from level 30 to level 40 on player 1-day and 7-day retention.
 
 Retention is important, as in order to invite players to make in-app purchases at later rounds for monetization, we must first retain players.
