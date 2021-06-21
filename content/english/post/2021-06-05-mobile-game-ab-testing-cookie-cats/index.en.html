@@ -1,5 +1,6 @@
 ---
-title: 'Mobile Game AB Testing: Cookie Cats'
+title: 'Mobile Game A/B Testing: Cookie Cats'
+summary: In this project, I performed A/B testing to help a mobile game decide whether to change a core feature.
 author: Gary Nguyen
 date: '2021-06-05'
 slug: []
@@ -42,8 +43,18 @@ DisableComments: no
 <h3>Introduction</h3>
 <div id="overview" class="section level4">
 <h4>Overview</h4>
-<p>Cookie Cats is a popular mobile puzzle game developed by <a href="https://tactilegames.com/">Tactile Games</a>. This is a classic game where you need to connect three pieces of puzzle of the same type to clear the board and score points.</p>
-<p>As players move to higher level, they will see gates that ask them to either wait for a period of time, or make an in-app purchase to progress. In this project, I am interested in performing an A/B test to understand the effect of moving the first gate from level 30 to level 40 on player retention.</p>
+<p>Cookie Cats is a popular mobile puzzle game developed by <a href="https://tactilegames.com/">Tactile Games</a>. This is a classic game where you need to connect three pieces of puzzle of the same type to clear a board and score points.</p>
+<p>As players move to higher level, they will see gates that ask them to either wait for a period of time, or make an in-app purchase to progress. In this project, I am interested in performing an A/B test to understand the effect of moving the first gate from level 30 to level 40 on player 1-day and 7-day retention.</p>
+<p>Retention is important, as in order to invite players to make in-app purchases at later rounds for monetization, we must first retain players.</p>
+<p>While the number of games played is another important feature, I will not test for it in this project.</p>
+</div>
+<div id="success-metrics" class="section level4">
+<h4>Success Metrics</h4>
+<p>The project can be deemed successful if:</p>
+<ul>
+<li>From analyses, I can conclude whether moving the first gate from level 30 to level 40 increase or decrease retention.</li>
+<li>I can conclude whether the change is <strong>statistically significant</strong>.</li>
+</ul>
 </div>
 </div>
 <div id="the-data" class="section level3">
@@ -61,26 +72,33 @@ DisableComments: no
 <h3>Method</h3>
 <div id="exploratory-data-analysis" class="section level4">
 <h4>Exploratory Data Analysis</h4>
+<p><strong>Number of games played</strong></p>
 <p><img src="users_gamerounds.png" /></p>
 <ul>
-<li>There are 3,994 users who installed the game but never played. It is odd that around 20% of these users have retention_1 as TRUE. A data quality check is needed.</li>
 <li>Only 59.4% of all users reach Gate 30, and only 65.76% of all users reach Gate 40.</li>
-<li>We can see a kink at sum_gamerounds == 1. 5538 users only play 1 game.</li>
+<li>We can see there is a peak at <code>sum_gamerounds == 1</code>. 5538 users only play 1 game.</li>
 </ul>
 <p>This points to a significant churn problem. These are a few recommendations:</p>
 <ul>
 <li>Tactile Entertainment should understand why most people only play a few games. Maybe the game is too difficult or not as interesting as other games.</li>
-<li>Tactile Entertainment should explore avenues to retain users, such as unlocking features as certain gates or building a more compelling story.</li>
+<li>Tactile Entertainment should understand while there are some people installing the game but not playing it at all. Is there a barrier, such as a bug, that prevents these players from playing the game for the first time?</li>
+<li>Tactile Entertainment should explore avenues to retain users above level 1, such as unlocking features as certain gates or building a more compelling story.</li>
 </ul>
+<p><strong>Note:</strong> There are 3,994 users who installed the game but never played. It is odd that around 20% of these users have <code>retention_1</code> as TRUE. A data quality check is needed.</p>
+<p><strong>Retention</strong></p>
+<p>1-day and 7-day retention are not very different between two groups. The difference is bigger for 7-day retention.</p>
+<p>The notable thing to point out is that both 1-day and 7-day retention are <strong>higher</strong> for Gate 30 compared to Gate 40.</p>
+<p><img src="ret_1_7.png" /></p>
 </div>
 <div id="bootstrapping" class="section level4">
 <h4>Bootstrapping</h4>
 <p>While the difference in <code>retention_1d</code> and <code>retention_7d</code> between <code>gate_30</code> and <code>gate_40</code> is very small, it can make a big difference when we look at millions of players if the game is grow in the future.</p>
-<p>I would like to understand whether the difference is significant. In this notebook, I will use bootstrapping: I will re-sample the dataset with replacement for 10,000 times, and calculate 1-day retention for those samples.</p>
-<p>This will give me an idea of how confident I should be about the difference between gate_30 and gate_40 - the procedure will give us an idea of how uncertain the numbers are.</p>
+<p>I would like to understand whether the difference is significant. Before A/B testing, I will use bootstrapping: I will re-sample the dataset with replacement for 10,000 times, and calculate 1-day and 7-day retention for those samples.</p>
+<p>This will give me an idea of how confident I should be about the difference between gate_30 and gate_40.</p>
 </div>
 <div id="ab-hypothesis-testing" class="section level4">
 <h4>A/B Hypothesis Testing:</h4>
+<p>The general procedure to set up an experiment and perform an A/B test is as follows (step 3-6 are already taken care of).</p>
 <ol style="list-style-type: decimal">
 <li>Understanding business problem and the data</li>
 <li>Form a hypothesis and check assumptions</li>
@@ -100,6 +118,7 @@ DisableComments: no
 </div>
 <div id="bayesian-ab-testing" class="section level4">
 <h4>Bayesian A/B Testing</h4>
+<p>In this project, I will also carry out a Bayesian A/B test using the <code>PyMC3</code> package.</p>
 <ul>
 <li>Priori: uniform distribution [0,1]</li>
 <li>Likelihood: Bernoulli</li>
@@ -110,7 +129,7 @@ DisableComments: no
 <h3>Results:</h3>
 <div id="bootstrapping-1" class="section level4">
 <h4>Bootstrapping:</h4>
-<p>After bootstrapping, it seems like moving from gate_30 to gate_40 actually <strong>lower</strong> 1-day and 7-day retention.</p>
+<p>After bootstrapping, it seems like moving from gate_30 to gate_40 indeed <strong>lower</strong> 1-day and 7-day retention.</p>
 <p>The probability that 1-day retention is greater when the gate is at level 30 is 96.23%.</p>
 <p><img src="1_day_ret_bs_density.png" /></p>
 <p>The probability that 7-day retention is greater when the gate is at level 30 is 99.9%.</p>
@@ -118,7 +137,7 @@ DisableComments: no
 </div>
 <div id="ab-hypothesis-testing-1" class="section level4">
 <h4>A/B Hypothesis Testing:</h4>
-<p>For both 1-day and 7-day retention:</p>
+<p>For both 1-day and 7-day retention, I first performed the Shapiro-Wilk test to see if the distribution is normal.</p>
 <p><strong>Shapiro-Wilk Test for normality</strong></p>
 <ul>
 <li><code>H_0</code>: The null hypothesis for this test is that the data are normally distributed.</li>
@@ -132,21 +151,21 @@ DisableComments: no
 <li><code>H_0</code>: null hypothesis that, for randomly selected values X and Y from two populations, the probability of X being greater than Y is equal to the probability of Y being greater than X.</li>
 <li><code>H_A</code>: alternative hypothesis that, for randomly selected values X and Y from two populations, the probability of X being greater than Y is not equal to the probability of Y being greater than X.</li>
 </ul>
-<p>In our case, p-value &lt; 0.05, we reject the null hypothesis and the difference between the control and the treatment group is statistically significance.</p>
+<p>In our case, p-value &lt; 0.05, we reject the null hypothesis and <strong>the difference between the control and the treatment group is statistically significant</strong>. It means that moving the gate from level 30 to level 40 actually lower both retention levels (1-day and 7-day).</p>
 </div>
 <div id="bayesian-ab-hypothesis-testing" class="section level4">
 <h4>Bayesian A/B Hypothesis Testing:</h4>
-<p>From the above observations, we have a 95.7% confidence that the retention for Gate 30 is greater than 40 for 1 day.</p>
+<p>From the below observations, we have a 95.7% confidence that the retention for Gate 30 is greater than 40 for 1 day.</p>
 <p><img src="1_day_posterior_rel.png" /></p>
-<p>From the above observations, we have a 99.9% confidence that the retention for Gate 30 is greater than 40 for 7 days.</p>
+<p>From the below observations, we have a 99.9% confidence that the retention for Gate 30 is greater than 40 for 7 days.</p>
 <p><img src="7_day_posterior_rel.png" /></p>
-<p>As a final conclusion we observed that placing the gate at Level 30 brought greater retention for both the 1 and 7 days metrics. For decision making in a real problem, other variables would need to be analyzed, however, if the decision needed to be taken taking into account only those studied, the Gate 30 maintenance would be the most adequate.</p>
+<p>We observed that placing the gate at Level 30 brought greater retention for both the 1 and 7 days retention.</p>
 </div>
 </div>
 <div id="recommendations" class="section level3">
 <h3>Recommendations:</h3>
 <ul>
-<li>Using all three methods (bootstrapping, A/B testing and bayesian A/B testing), there is strong evidence that 1-day and 7-day retention will <strong>decrease</strong> if the gate is to be moved from level 30 to level 40.</li>
+<li>Using all three methods (bootstrapping, A/B testing and Bayesian A/B testing), there is strong evidence that 1-day and 7-day retention will <strong>decrease</strong> if the gate is to be moved from level 30 to level 40.</li>
 <li>Although there are other metrics to consider, if we want to maintain retention, we <strong>should not</strong> move the gates.</li>
 <li>This result can be counter-intuitive. After all, if the gate moves to a later level, a user will have more time to explore the game and its features. Therefore, one could expect that moving the gate will improve retention.</li>
 <li>A hypothesis is that: breaks in between games can help prolong enjoyment more as people tend to lose interest if they do something for an extended period of time. Therefore, having a gate at a lower level actually <strong>helps</strong> with retention.</li>
