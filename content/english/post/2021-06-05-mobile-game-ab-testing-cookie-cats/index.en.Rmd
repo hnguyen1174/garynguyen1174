@@ -43,6 +43,17 @@ The dataset contains 90,189 players that installed the game while the A/B test t
 
 #### Exploratory Data Analysis
 
+![](users_gamerounds.png)
+
+* There are 3,994 users who installed the game but never played. It is odd that around 20% of these users have retention_1 as TRUE. A data quality check is needed.
+* Only 59.4% of all users reach Gate 30, and only 65.76% of all users reach Gate 40.
+* We can see a kink at sum_gamerounds == 1. 5538 users only play 1 game.
+
+This points to a significant churn problem. These are a few recommendations:
+
+* Tactile Entertainment should understand why most people only play a few games. Maybe the game is too difficult or not as interesting as other games.
+* Tactile Entertainment should explore avenues to retain users, such as unlocking features as certain gates or building a more compelling story.
+
 #### Bootstrapping
 
 While the difference in `retention_1d` and `retention_7d` between `gate_30` and `gate_40` is very small, it can make a big difference when we look at millions of players if the game is grow in the future.
@@ -85,6 +96,7 @@ The probability that 1-day retention is greater when the gate is at level 30 is 
 The probability that 7-day retention is greater when the gate is at level 30 is 99.9%.
 
 ![](7_day_ret_bs_density.png)
+
 #### A/B Hypothesis Testing:
 
 For both 1-day and 7-day retention:
@@ -105,6 +117,18 @@ In our case, both the control group (`gate_30`) and the treatment group (`gate_4
 * `H_A`: alternative hypothesis that, for randomly selected values X and Y from two populations, the probability of X being greater than Y is not equal to the probability of Y being greater than X.
 
 In our case, p-value < 0.05, we reject the null hypothesis and the difference between the control and the treatment group is statistically significance.
+
+#### Bayesian A/B Hypothesis Testing:
+
+From the above observations, we have a 95.7% confidence that the retention for Gate 30 is greater than 40 for 1 day.
+
+![](1_day_posterior_rel.png)
+
+From the above observations, we have a 99.9% confidence that the retention for Gate 30 is greater than 40 for 7 days.
+
+![](7_day_posterior_rel.png)
+
+As a final conclusion we observed that placing the gate at Level 30 brought greater retention for both the 1 and 7 days metrics. For decision making in a real problem, other variables would need to be analyzed, however, if the decision needed to be taken taking into account only those studied, the Gate 30 maintenance would be the most adequate.
 
 ### Recommendations:
 

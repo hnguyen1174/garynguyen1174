@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hypothesis_Testing on Welcome, I&#39;m Gary</title>
+    <link>/tags/hypothesis_testing/</link>
+    <description>Recent content in Hypothesis_Testing on Welcome, I&#39;m Gary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 05 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/hypothesis_testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mobile Game AB Testing: Cookie Cats</title>
+      <link>/post/2021-06-05-mobile-game-ab-testing-cookie-cats/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-06-05-mobile-game-ab-testing-cookie-cats/</guid>
+      <description>Introduction The Data Method Results: Recommendations: Next Steps: Artifact   🚧 Under Construction 🚧</description>
+    </item>
+    
+  </channel>
+</rss>
