@@ -1,0 +1,127 @@
+---
+title: 'Mobile Game AB Testing: Cookie Cats'
+author: Gary Nguyen
+date: '2021-06-05'
+slug: []
+categories:
+  - Project
+tags:
+  - AB_Testing
+  - Hypothesis_Testing
+thumbnail: "images/mobile_game.jpeg"
+output:
+  blogdown::html_page:
+    highlight: tango
+    toc: true
+Description: ''
+DisableComments: no
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#the-data">The Data</a></li>
+<li><a href="#method">Method</a></li>
+<li><a href="#results">Results:</a></li>
+<li><a href="#recommendations">Recommendations:</a></li>
+<li><a href="#next-steps">Next Steps:</a></li>
+<li><a href="#artifact">Artifact</a></li>
+</ul>
+</div>
+
+<p>🚧 Under Construction 🚧</p>
+<p><a href="https://github.com/hnguyen1174/cookie_cats_ab_testing"><img src="https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub" alt="GitHub" /></a></p>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<div id="overview" class="section level4">
+<h4>Overview</h4>
+<p>Cookie Cats is a popular mobile puzzle game developed by <a href="https://tactilegames.com/">Tactile Games</a>. This is a classic game where you need to connect three pieces of puzzle of the same type to clear the board and score points.</p>
+<p>As players move to higher level, they will see gates that ask them to either wait for a period of time, or make an in-app purchase to progress. In this project, I am interested in performing an A/B test to understand the effect of moving the first gate from level 30 to level 40 on player retention.</p>
+</div>
+</div>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+<p>The dataset contains 90,189 players that installed the game while the A/B test took place. The features are as follows:</p>
+<ul>
+<li><code>userid</code>: player unique identification</li>
+<li><code>version</code>: whether the player is placed in the control group (<code>gate_30</code>; the first gate is placed at level 30) or the test group (<code>gate_40</code>; the first gate is placed at level 40).</li>
+<li><code>sum_gamerounds</code>: the number of game rounds played by the player during the <strong>first week</strong> after installation</li>
+<li><code>retention_1</code>: 1-day retention of player after installation</li>
+<li><code>retention_7</code>: 7-day retention of player after installation</li>
+</ul>
+</div>
+<div id="method" class="section level3">
+<h3>Method</h3>
+<div id="exploratory-data-analysis" class="section level4">
+<h4>Exploratory Data Analysis</h4>
+</div>
+<div id="bootstrapping" class="section level4">
+<h4>Bootstrapping</h4>
+<p>While the difference in <code>retention_1d</code> and <code>retention_7d</code> between <code>gate_30</code> and <code>gate_40</code> is very small, it can make a big difference when we look at millions of players if the game is grow in the future.</p>
+<p>I would like to understand whether the difference is significant. In this notebook, I will use bootstrapping: I will re-sample the dataset with replacement for 10,000 times, and calculate 1-day retention for those samples.</p>
+<p>This will give me an idea of how confident I should be about the difference between gate_30 and gate_40 - the procedure will give us an idea of how uncertain the numbers are.</p>
+</div>
+<div id="ab-hypothesis-testing" class="section level4">
+<h4>A/B Hypothesis Testing:</h4>
+<ol style="list-style-type: decimal">
+<li>Understanding business problem and the data</li>
+<li>Form a hypothesis and check assumptions</li>
+<li>Build a randomization strategy</li>
+<li>Set metrics</li>
+<li>Choose a sample size</li>
+<li>Collect the data</li>
+<li>Perform exploratory data analysis and process data</li>
+<li>Check normality and homogeneity</li>
+<li>Apply tests (Shapiro, Levene Test, T-Test, Welch Test, Mann Whitney U Test)</li>
+<li>Evaluate the results on the metrics</li>
+<li>Make inferences</li>
+<li>Make recommendations</li>
+</ol>
+<p>Hypothesis Testing Procedure:</p>
+<p><img src="ab_test.png" /></p>
+</div>
+<div id="bayesian-ab-testing" class="section level4">
+<h4>Bayesian A/B Testing</h4>
+</div>
+</div>
+<div id="results" class="section level3">
+<h3>Results:</h3>
+<div id="bootstrapping-1" class="section level4">
+<h4>Bootstrapping:</h4>
+<p>After bootstrapping, it seems like moving from gate_30 to gate_40 actually <strong>lower</strong> 1-day and 7-day retention.</p>
+<p>The probability that 1-day retention is greater when the gate is at level 30 is 96.23%.</p>
+<p><img src="1_day_ret_bs_density.png" /></p>
+<p>The probability that 7-day retention is greater when the gate is at level 30 is 99.9%.</p>
+<p><img src="7_day_ret_bs_density.png" />
+#### A/B Hypothesis Testing:</p>
+<p>For both 1-day and 7-day retention:</p>
+<p><strong>Shapiro-Wilk Test for normality</strong></p>
+<ul>
+<li><code>H_0</code>: The null hypothesis for this test is that the data are normally distributed.</li>
+<li><code>H_A</code>: The alternative hypothesis is that the data is not normally distributed.</li>
+</ul>
+<p>If the chosen alpha level is 0.05 and the p-value is less than 0.05, then the null hypothesis that the data are normally distributed is rejected. If the p-value is greater than 0.05, then the null hypothesis is not rejected.</p>
+<p>In our case, both the control group (<code>gate_30</code>) and the treatment group (<code>gate_40</code>) are not normally distributed as the p-values are both less than 0.05. Therefore, we will go with the Mann–Whitney instead of a standard t-test.</p>
+<p><strong>The Mann–Whitney U test</strong>
+(also called the Mann–Whitney–Wilcoxon (MWW), Wilcoxon rank-sum test, or Wilcoxon–Mann–Whitney test) is a nonparametric test:</p>
+<ul>
+<li><code>H_0</code>: null hypothesis that, for randomly selected values X and Y from two populations, the probability of X being greater than Y is equal to the probability of Y being greater than X.</li>
+<li><code>H_A</code>: alternative hypothesis that, for randomly selected values X and Y from two populations, the probability of X being greater than Y is not equal to the probability of Y being greater than X.</li>
+</ul>
+<p>In our case, p-value &lt; 0.05, we reject the null hypothesis and the difference between the control and the treatment group is statistically significance.</p>
+</div>
+</div>
+<div id="recommendations" class="section level3">
+<h3>Recommendations:</h3>
+</div>
+<div id="next-steps" class="section level3">
+<h3>Next Steps:</h3>
+</div>
+<div id="artifact" class="section level3">
+<h3>Artifact</h3>
+<ul>
+<li><a href="https://github.com/hnguyen1174/cookie_cats_ab_testing">Github</a></li>
+</ul>
+</div>
