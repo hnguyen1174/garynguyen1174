@@ -140,7 +140,10 @@ As a final conclusion we observed that placing the gate at Level 30 brought grea
 
 ### Recommendations:
 
-
+* Using all three methods (bootstrapping, A/B testing and bayesian A/B testing), there is strong evidence that 1-day and 7-day retention will **decrease** if the gate is to be moved from level 30 to level 40.
+* Although there are other metrics to consider, if we want to maintain retention, we **should not** move the gates.
+* This result can be counter-intuitive. After all, if the gate moves to a later level, a user will have more time to explore the game and its features. Therefore, one could expect that moving the gate will improve retention.
+* A hypothesis is that: breaks in between games can help prolong enjoyment more as people tend to lose interest if they do something for an extended period of time. Therefore, having a gate at a lower level actually **helps** with retention.
 
 ### Next Steps:
 
