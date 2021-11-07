@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html  dir="ltr" lang="en" data-theme=""><head>
-    <title> Gary Nguyen | Posts </title>
+    <title> Gary Nguyen | Analysis of Ads Spending </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.83.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -33,10 +33,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
 
-    <link rel="canonical" href="/post/">
+    <link rel="canonical" href="/post/2021-11-07-analysis-of-ads-spending/">
 
     
-    <link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="Welcome, I'm Gary" />
     
     
     
@@ -57,8 +56,8 @@
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="I&#39;m a data scientist and NLP practitioner based in NYC"/>
+<meta name="twitter:title" content="Analysis of Ads Spending"/>
+<meta name="twitter:description" content="In this project, I resampling methods and statistical test (t-test, Mann-Whitney test, ANOVA) to analyze ads spending data"/>
 
 
     
@@ -116,7 +115,7 @@
                    title="">Home</a></li>
         
             
-            <li><a class="current"
+            <li><a 
                    href="/post/"
                         
                    title="">Posts</a></li>
@@ -152,78 +151,95 @@
 
     <div class="autopagerize_page_element">
         <div class="content">
-    <div class="archive  animated fadeInDown ">
-        <ul class="list-with-title">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
             
-                <div class="listing-title">2021</div>
-                
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="/post/2021-11-07-analysis-of-ads-spending/" title="Analysis of Ads Spending">Analysis of Ads Spending</a>
-                            
-                            </div>
-                        </div>
-                    </ul>
-                
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="/post/2021-06-06-ehr-symptom-detection/" title="EHR Symptom Detection">EHR Symptom Detection</a>
-                            
-                            </div>
-                        </div>
-                    </ul>
-                
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="/post/2021-06-05-mobile-game-ab-testing-cookie-cats/" title="Mobile Game A/B Testing: Cookie Cats">Mobile Game A/B Testing: Cookie Cats</a>
-                            
-                            </div>
-                        </div>
-                    </ul>
-                
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="/post/2021-06-04-disaster-tweets-detector/" title="Disaster Tweets Detector">Disaster Tweets Detector</a>
-                            
-                            </div>
-                        </div>
-                    </ul>
-                
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="/post/2021-06-02-movie-sentiment-prediction-deployment-on-aws-sagemaker/" title="Movie Sentiment Prediction Deployment on AWS SageMaker">Movie Sentiment Prediction Deployment on AWS SageMaker</a>
-                            
-                            </div>
-                        </div>
-                    </ul>
-                
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="/post/2021-05-27-quuppa-tracking-device-and-group-dynamics-in-education/" title="Quuppa Tracking Device and Group Dynamics in Education">Quuppa Tracking Device and Group Dynamics in Education</a>
-                            
-                            </div>
-                        </div>
-                    </ul>
-                
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="/post/2021-05-26-instacart-market-baskey-analysis/" title="Instacart Market Baskey Analysis">Instacart Market Baskey Analysis</a>
-                            
-                            </div>
-                        </div>
-                    </ul>
-                
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="/post/2021-05-26-crunchbase-founder-analysis/" title="Crunchbase Founder Analysis">Crunchbase Founder Analysis</a>
-                            
-                            </div>
-                        </div>
-                    </ul>
-                
+            <img class="post-thumbnail" src="/images/social_media_front.jpeg" alt="Thumbnail image">
             
-        </ul>
+            <div class="post-title">
+                <h3>Analysis of Ads Spending</h3>
+                
+                    <div class="info">
+                        <em class="fas fa-calendar-day"></em>
+                        <span class="date"> 
+                                                2021-11-07
+                                           </span>
+                        <em class="fas fa-stopwatch"></em>
+                        <span class="reading-time">2-minute read</span>
+                    </div>
+                
+            </div>
+
+            
+<script src="/post/2021-11-07-analysis-of-ads-spending/index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#data-exploration">Data Exploration</a></li>
+<li><a href="#method">Method</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#artifact">Artifact</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<ul>
+<li>A social media company has an ads product on their platform where companies and brands can use to market their products and services.</li>
+<li>Overspending is a situation where the ads generate more clicks than the company budgets for, and therefore incur a cost to the social medica company.</li>
+<li>The social media company therefore hypothesizes that a new advertising product, where companies pay whenever the ad show, will reduce overspending. The data scientists at the company ran an A/B experiment to decide whether this new product is indeed effective.</li>
+</ul>
+<div id="data-exploration" class="section level3">
+<h3>Data Exploration</h3>
+<p>The distributions of ads spending and budget are as follows:</p>
+<p align="center">
+<img src="exp1.png" alt="drawing" width="600"/>
+</p>
+<p align="center">
+<img src="exp2.png" alt="drawing" width="600"/>
+</p>
+</div>
+<div id="method" class="section level3">
+<h3>Method</h3>
+<p>To explore the success of the new ads product by assessing whether the new ad product reduces overspending, I looked into two questions:
+* Was the new product effective at reducing the proportion of campaigns that overspent? To answer this question, I used a proportion z-test, logistic regression and ANVA to investigate the effects of the new product &amp; company size on the proportion of campaigns that overspent.
+* Was the new product effective at reducing the total overspend dollar? To answer this question, I used a permutation test, and Mann-Whitney-Wilcoxon test to assess whether the mean overspending of the treatment group is smaller than that of the control group.</p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<ul>
+<li>There are 6,257 out of 7,733 (80.91%) campaigns that overspent in the control group, and 5,180 out of 5,721 (73.91%) campaigns that overspent the treatment group.</li>
+<li>Based on the proportion z-test, there is convincing evidence that the new ad product reduces the proportion of overspending campaign. Based on logistic regression, medium and large company size contribute to a campaign’s lower probability of overspending.</li>
+</ul>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>However, there is not enough evidence to conclude that the mean overspending amount in the treatment group is lower than the mean overspending amount in the control group, but there is strong evidence that the observations of overspend in the treatment group tend to be smaller than the observations of overspend in the control group, based on the Mann-Whitney-Wilcoxon rank sum test. Because of this inconclusiveness, in order to make inference about mean overspending, it is advisable to run a follow-up test.</li>
+</ol>
+<ul>
+<li>There is evidence for the social media company to be concerned about the lower budget entered for campaigns with the new product, based on a t-test on the means of log transformations of campaign budgets.</li>
+</ul>
+</div>
+<div id="artifact" class="section level3">
+<h3>Artifact</h3>
+<ul>
+<li><a href="https://github.com/hnguyen1174/AdsSpending">Github</a></li>
+<li><a href="https://github.com/hnguyen1174/AdsSpending/blob/main/report/Report.pdf">Project report (draft)</a></li>
+</ul>
+</div>
+</div>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                <span class="separator"><a class="category" href="/categories/project/">Project</a></span>
+                <span class="separator"><a class="tag" href="/tags/ab_testing/">AB_Testing</a></span>
+            </div>
+        </div>
+
+        
     </div>
+
 
         </div>
     </div>
