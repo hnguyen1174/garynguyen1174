@@ -1,0 +1,52 @@
+---
+title: "Analysis of Ads Spending"
+summary: In this project, I resampling methods and statistical test (t-test, Mann-Whitney test, ANOVA) to analyze ads spending data
+author: Gary Nguyen
+date: '2021-11-07'
+output:
+  blogdown::html_page:
+    highlight: tango
+    toc: true
+slug: []
+thumbnail: "images/social_media_front.jpeg"
+categories:
+  - Project
+tags:
+  - AB_Testing
+Description: ''
+Tags: []
+Categories: []
+DisableComments: no
+---
+
+## Introduction
+
+*	A social media company has an ads product on their platform where companies and brands can use to market their products and services.
+*	Overspending is a situation where the ads generate more clicks than the company budgets for, and therefore incur a cost to the social medica company. 
+*	The social media company therefore hypothesizes that a new advertising product, where companies pay whenever the ad show, will reduce overspending. The data scientists at the company ran an A/B experiment to decide whether this new product is indeed effective.
+
+### Data Exploration
+
+The distributions of ads spending and budget are as follows:
+
+<p align="center">
+  <img src="exp1.png" alt="drawing" width="600"/>
+</p>
+
+<p align="center">
+  <img src="exp2.png" alt="drawing" width="600"/>
+</p>
+
+### Method
+
+To explore the success of the new ads product by assessing whether the new ad product reduces overspending, I looked into two questions:
+* Was the new product effective at reducing the proportion of campaigns that overspent? To answer this question, I used a proportion z-test, logistic regression and ANVA to investigate the effects of the new product & company size on the proportion of campaigns that overspent.
+*	Was the new product effective at reducing the total overspend dollar? To answer this question, I used a permutation test, and Mann-Whitney-Wilcoxon test to assess whether the mean overspending of the treatment group is smaller than that of the control group.
+
+### Conclusion
+
+* There are 6,257 out of 7,733 (80.91%) campaigns that overspent in the control group, and 5,180 out of 5,721 (73.91%) campaigns that overspent the treatment group.
+* Based on the proportion z-test, there is convincing evidence that the new ad product reduces the proportion of overspending campaign. Based on logistic regression, medium and large company size contribute to a campaign’s lower probability of overspending. 
+c.	However, there is not enough evidence to conclude that the mean overspending amount in the treatment group is lower than the mean overspending amount in the control group, but there is strong evidence that the observations of overspend in the treatment group tend to be smaller than the observations of overspend in the control group, based on the Mann-Whitney-Wilcoxon rank sum test. Because of this inconclusiveness, in order to make inference about mean overspending, it is advisable to run a follow-up test.
+* There is evidence for the social media company to be concerned about the lower budget entered for campaigns with the new product, based on a t-test on the means of log transformations of campaign budgets.
+
