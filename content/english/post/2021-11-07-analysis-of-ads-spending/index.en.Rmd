@@ -1,6 +1,6 @@
 ---
 title: "Analysis of Ads Spending"
-summary: In this project, I resampling methods and statistical test (t-test, Mann-Whitney test, ANOVA) to analyze ads spending data
+summary: In this project, I used resampling methods and statistical test (t-test, Mann-Whitney test, ANOVA) to analyze ads spending data
 author: Gary Nguyen
 date: '2021-11-07'
 output:

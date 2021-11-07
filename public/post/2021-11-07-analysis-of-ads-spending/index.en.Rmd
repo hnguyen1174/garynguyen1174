@@ -17,6 +17,8 @@ Description: ''
 DisableComments: no
 ---
 
+[![GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub)](https://github.com/hnguyen1174/AdsSpending)
+
 ## Introduction
 
 *	A social media company has an ads product on their platform where companies and brands can use to market their products and services.
@@ -49,8 +51,44 @@ To explore the success of the new ads product by assessing whether the new ad pr
 Proportion Z-test result:
 
 <p align="center">
-  <img src="q1_ztest.png" alt="drawing" width="400"/>
+  <img src="q1_ztest.png" alt="drawing" width="600"/>
 </p>
+
+Logistic Regression result:
+
+<p align="center">
+  <img src="q1_logreg.png" alt="drawing" width="600"/>
+</p>
+
+ANOVA result:
+
+<p align="center">
+  <img src="q1_anova.png" alt="drawing" width="600"/>
+</p>
+
+Interpretation:
+
+* Keeping all other predictors constant , if the campaign is in the treatment group, the odds of being an overspending campaign will be 1- e^(-0.424) = 34.5% lower, with statistical significance.
+* Keeping all other predictors constant, then the odds of being an overspending campaign in medium-sized company is 1-e^(-0.532) = 41.3% lower than in small-sized company (base level), with statistical significance.
+* Keeping all other predictors constant, the odds ratio of being an overspending campaign in large-sized company is 1-^(-0.425) = 34.6% lower than in small-sized company (base level), with statistical significance.
+
+#### Question 2: Was the new product effective at reducing the total overspend dollar?
+
+Permutation Test Result (for mean overspending)
+
+<p align="center">
+  <img src="q2_perm.png" alt="drawing" width="600"/>
+</p>
+
+We can see that the observed difference lies well within the permutation distribution. In fact, the mean difference of random permutations exceeds the observed difference between control and treatment 43.5% of the time, which is far greater than the 5% threshold of significance. Therefore, we don’t have enough evidence to conclude that the mean values of raw overspend differ significantly between the control and treatment group.
+
+Mann-Whitney-Wilcoxon Test for raw overspend (upper) and capped overspend (lower):
+
+<p align="center">
+  <img src="q2_rank.png" alt="drawing" width="600"/>
+</p>
+
+There is evidence that overspend (both raw and capped) in control group tends to be larger than overspend in the treatment group. However, it is difficult to quantify the result because this is a non-parametric test. Because of inconclusive findings, I recommend running a follow-up test with clearer design and higher power, to investigate further.
 
 ### Conclusion
 

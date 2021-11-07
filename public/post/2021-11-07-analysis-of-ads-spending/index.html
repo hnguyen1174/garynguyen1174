@@ -165,7 +165,7 @@
                                                 2021-11-07
                                            </span>
                         <em class="fas fa-stopwatch"></em>
-                        <span class="reading-time">2-minute read</span>
+                        <span class="reading-time">4-minute read</span>
                     </div>
                 
             </div>
@@ -186,6 +186,7 @@
 </ul>
 </div>
 
+<p><a href="https://github.com/hnguyen1174/AdsSpending"><img src="https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub" alt="GitHub" /></a></p>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <ul>
@@ -217,8 +218,35 @@
 <h4>Question 1: Was the new product effective at reducing the proportion of campaigns that overspent?</h4>
 <p>Proportion Z-test result:</p>
 <p align="center">
-<img src="q1_ztest.png" alt="drawing" width="400"/>
+<img src="q1_ztest.png" alt="drawing" width="600"/>
 </p>
+<p>Logistic Regression result:</p>
+<p align="center">
+<img src="q1_logreg.png" alt="drawing" width="600"/>
+</p>
+<p>ANOVA result:</p>
+<p align="center">
+<img src="q1_anova.png" alt="drawing" width="600"/>
+</p>
+<p>Interpretation:</p>
+<ul>
+<li>Keeping all other predictors constant , if the campaign is in the treatment group, the odds of being an overspending campaign will be 1- e^(-0.424) = 34.5% lower, with statistical significance.</li>
+<li>Keeping all other predictors constant, then the odds of being an overspending campaign in medium-sized company is 1-e^(-0.532) = 41.3% lower than in small-sized company (base level), with statistical significance.</li>
+<li>Keeping all other predictors constant, the odds ratio of being an overspending campaign in large-sized company is 1-^(-0.425) = 34.6% lower than in small-sized company (base level), with statistical significance.</li>
+</ul>
+</div>
+<div id="question-2-was-the-new-product-effective-at-reducing-the-total-overspend-dollar" class="section level4">
+<h4>Question 2: Was the new product effective at reducing the total overspend dollar?</h4>
+<p>Permutation Test Result (for mean overspending)</p>
+<p align="center">
+<img src="q2_perm.png" alt="drawing" width="600"/>
+</p>
+<p>We can see that the observed difference lies well within the permutation distribution. In fact, the mean difference of random permutations exceeds the observed difference between control and treatment 43.5% of the time, which is far greater than the 5% threshold of significance. Therefore, we don’t have enough evidence to conclude that the mean values of raw overspend differ significantly between the control and treatment group.</p>
+<p>Mann-Whitney-Wilcoxon Test for raw overspend (upper) and capped overspend (lower):</p>
+<p align="center">
+<img src="q2_rank.png" alt="drawing" width="600"/>
+</p>
+<p>There is evidence that overspend (both raw and capped) in control group tends to be larger than overspend in the treatment group. However, it is difficult to quantify the result because this is a non-parametric test. Because of inconclusive findings, I recommend running a follow-up test with clearer design and higher power, to investigate further.</p>
 </div>
 </div>
 <div id="conclusion" class="section level3">
