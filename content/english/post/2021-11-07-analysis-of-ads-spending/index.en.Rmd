@@ -50,3 +50,8 @@ To explore the success of the new ads product by assessing whether the new ad pr
 c.	However, there is not enough evidence to conclude that the mean overspending amount in the treatment group is lower than the mean overspending amount in the control group, but there is strong evidence that the observations of overspend in the treatment group tend to be smaller than the observations of overspend in the control group, based on the Mann-Whitney-Wilcoxon rank sum test. Because of this inconclusiveness, in order to make inference about mean overspending, it is advisable to run a follow-up test.
 * There is evidence for the social media company to be concerned about the lower budget entered for campaigns with the new product, based on a t-test on the means of log transformations of campaign budgets.
 
+### Artifact
+
+* [Github](https://github.com/hnguyen1174/AdsSpending)
+* [Project report (draft)](https://github.com/hnguyen1174/AdsSpending/blob/main/report/Report.pdf)
+
