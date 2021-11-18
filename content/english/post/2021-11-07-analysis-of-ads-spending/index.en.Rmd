@@ -22,8 +22,8 @@ DisableComments: no
 ## Introduction
 
 *	A social media company has an ads product on their platform where companies and brands can use to market their products and services.
-*	Overspending is a situation where the ads generate more clicks than the company budgets for, and therefore incur a cost to the social medica company. 
-*	The social media company therefore hypothesizes that a new advertising product, where companies pay whenever the ad show, will reduce overspending. The data scientists at the company ran an A/B experiment to decide whether this new product is indeed effective.
+*	Overspending is a situation where the ads generate more clicks than the company budgets for, and therefore incur a cost to the social media company. 
+*	The social media company therefore hypothesizes that a new advertising product, where companies pay whenever the ads show, will reduce overspending. The data scientists at the company ran an A/B experiment to decide whether this new product is indeed effective.
 
 ### Data Exploration
 
